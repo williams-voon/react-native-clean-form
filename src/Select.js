@@ -4,7 +4,8 @@ import {
   Picker,
   Text,
   TouchableOpacity,
-  View
+  View,
+  Platform,
 } from 'react-native'
 import styled from 'styled-components/native'
 import { default as BaseIcon } from 'react-native-vector-icons/Ionicons';
@@ -111,14 +112,39 @@ class Select extends Component {
     if (value) {
       label = labelsByValue[value]
     }
+    if (Platform.OS === 'ios') {
+      return (
+        <SelectWrapper inlineLabel={inlineLabel} theme={theme}>
+          <Modal
+            onRequestClose={this.toggleSelector}
+            visible={showSelector}
+          >
+            <Picker
+              selectedValue={value}
+              onValueChange={this.onValueChange}
+              {...rest}>
+              { options.map(option => {
+                const label = option[labelKey]
+                const value = option[valueKey]
 
-    return (
-      <SelectWrapper inlineLabel={inlineLabel} theme={theme}>
-        <Modal
-          onRequestClose={this.toggleSelector}
-          visible={showSelector}
-        >
+                return <Picker.Item key={value} label={label} value={value} />
+              }) }
+            </Picker>
+          </Modal>
+          <TouchableOpacity onPress={this.toggleSelector}>
+            <LabelIconWrapper inlineLabel={inlineLabel}>
+              <SelectLabel inlineLabel={inlineLabel}>{ label }</SelectLabel>
+              <Icon name="ios-arrow-down" />
+            </LabelIconWrapper>
+          </TouchableOpacity>
+        </SelectWrapper>
+      )
+    }else{
+      let height=theme?theme.FormGroup.height:defaultTheme.FormGroup.height;
+      return (
+        <SelectWrapper inlineLabel={inlineLabel} theme={theme}>
           <Picker
+            style={{height:height}}
             selectedValue={value}
             onValueChange={this.onValueChange}
             {...rest}>
@@ -129,15 +155,9 @@ class Select extends Component {
               return <Picker.Item key={value} label={label} value={value} />
             }) }
           </Picker>
-        </Modal>
-        <TouchableOpacity onPress={this.toggleSelector}>
-          <LabelIconWrapper inlineLabel={inlineLabel}>
-            <SelectLabel inlineLabel={inlineLabel}>{ label }</SelectLabel>
-            <Icon name="ios-arrow-down" />
-          </LabelIconWrapper>
-        </TouchableOpacity>
-      </SelectWrapper>
-    )
+        </SelectWrapper>
+      )
+    }
   }
 }
 
