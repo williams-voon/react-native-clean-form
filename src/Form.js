@@ -25,7 +25,11 @@ class Form extends Component {
 
     return (
       <View style={{ flex: 1 }} onLayout={this.onLayout}>
-        <ScrollView contentContainerStyle={{ minHeight: this.state.height }}>
+        <ScrollView contentContainerStyle={{ minHeight: this.state.height }}
+          ref='scrollView'
+          onContentSizeChange={(contentWidth, contentHeight)=>{
+            this.refs.scrollView.scrollTo({x:0, y:0,animated:false});
+          }}>
             { children }
         </ScrollView>
       </View>
