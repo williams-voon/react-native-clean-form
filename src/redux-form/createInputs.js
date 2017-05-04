@@ -6,7 +6,8 @@ import {
 import {
   Input as InputRenderer,
   Select as SelectRenderer,
-  Switch as SwitchRenderer
+  Switch as SwitchRenderer,
+  ColorSelect as ColorSelectRenderer
 } from '../../index'
 
 const createInputs = inputCreator => {
@@ -15,7 +16,7 @@ const createInputs = inputCreator => {
   )
   const Input = inputCreator('Input', renderInput, InputRenderer.PropTypes, InputRenderer.defaultProps)
 
-  const renderSelect = ({ input: { onChange, value }, labelKey, valueKey, options, placeholder }) => (
+  const renderSelect = ({ input: { onChange, value }, labelKey, valueKey, options, placeholder,customModalPicker,multiSelect }) => (
     <SelectRenderer
       labelKey={labelKey}
       options={options}
@@ -23,6 +24,8 @@ const createInputs = inputCreator => {
       placeholder={placeholder}
       value={value}
       valueKey={valueKey}
+      customModalPicker={customModalPicker}
+      multiSelect={multiSelect}
     />
   )
   const Select = inputCreator('Select', renderSelect, SelectRenderer.PropTypes, SelectRenderer.defaultProps)
@@ -37,10 +40,20 @@ const createInputs = inputCreator => {
   }
   const Switch = inputCreator('Switch', renderSwitch, SwitchRenderer.PropTypes, SwitchRenderer.defaultProps)
 
+  const renderColorSelect = ({ input: { onChange, value }, valueKey, placeholder }) => (
+      <ColorSelectRenderer
+        onValueChange={onChange}
+        placeholder={placeholder}
+        value={value}
+      />
+    )
+  const ColorSelect = inputCreator('ColorSelect', renderColorSelect, ColorSelectRenderer.PropTypes, ColorSelectRenderer.defaultProps)
+
   return {
     Input,
     Select,
-    Switch
+    Switch,
+    ColorSelect
   }
 }
 

@@ -10,16 +10,24 @@ const ErrorMessage = styled.Text`
   marginBottom: ${props => props.theme.ErrorMessage.marginBottom};
   textAlign: ${props => props.theme.ErrorMessage.textAlign};
 `
+const TipsMessage = styled.Text`
+  color: ${props => props.theme.TipsMessage.color};
+  fontSize: ${props => props.theme.TipsMessage.fontSize};
+  marginTop: ${props => props.theme.TipsMessage.marginTop};
+  marginBottom: ${props => props.theme.ErrorMessage.marginBottom};
+  textAlign: ${props => props.theme.TipsMessage.textAlign};
+`
 
 ErrorMessage.defaultProps = {
   theme: defaultTheme
 }
 
 const render = renderComponent => props => {
-  const { border, input : { onChange, ...restInput }, label, inlineLabel, theme, meta: { touched, error } } = props
+  const { border, input : { onChange, ...restInput }, label, inlineLabel, showTips, tips, theme, meta: { touched, error } } = props
 
   return (
     <View>
+      { showTips && tips && <TipsMessage theme={theme?theme:defaultTheme}>{ tips }</TipsMessage> }
       <FormGroup border={border} inlineLabel={inlineLabel} theme={theme} error={touched && !!error} {...props} >
         <Label theme={theme}>{ label }</Label>
         { renderComponent(props) }

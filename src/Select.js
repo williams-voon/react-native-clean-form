@@ -99,6 +99,8 @@ class Select extends Component {
       placeholder,
       valueKey,
       theme,
+      customModalPicker,
+      multiSelect,
       ...rest
     } = this.props
     const { showSelector, value } = this.state
@@ -110,9 +112,43 @@ class Select extends Component {
 
     let label = <SelectPlaceholder>{ placeholder }</SelectPlaceholder>
     if (value) {
-      label = labelsByValue[value]
+      if(multiSelect){
+        label=value.split(",").reduce((carry, option) => {
+          if(carry.length>0){
+            carry=carry+','+labelsByValue[option]
+          }else{
+            carry=labelsByValue[option]
+          }
+          return carry
+        }, '')
+      }else{
+        label = labelsByValue[value]
+      }
     }
-    if (Platform.OS === 'ios') {
+    if (customModalPicker){
+      let CustomModalPicker=customModalPicker;
+     return (
+       <SelectWrapper inlineLabel={inlineLabel} theme={theme}>
+
+         <CustomModalPicker
+           onRequestClose={this.toggleSelector}
+           visible={showSelector}
+           data={options}
+           onChange={this.onValueChange}
+           cancelText="取消"
+           initValue={value}
+         />
+
+         <TouchableOpacity onPress={this.toggleSelector}>
+           <LabelIconWrapper inlineLabel={inlineLabel}>
+             <SelectLabel inlineLabel={inlineLabel}>{ label }</SelectLabel>
+             <Icon name="ios-arrow-down" />
+           </LabelIconWrapper>
+         </TouchableOpacity>
+       </SelectWrapper>
+      )
+    }
+     else if( Platform.OS === 'ios' ) {
       return (
         <SelectWrapper inlineLabel={inlineLabel} theme={theme}>
           <Modal
@@ -131,6 +167,7 @@ class Select extends Component {
               }) }
             </Picker>
           </Modal>
+
           <TouchableOpacity onPress={this.toggleSelector}>
             <LabelIconWrapper inlineLabel={inlineLabel}>
               <SelectLabel inlineLabel={inlineLabel}>{ label }</SelectLabel>
@@ -169,8 +206,11 @@ Select.PropTypes = {
   valueKey: React.PropTypes.string,
   value: React.PropTypes.oneOf([
     React.PropTypes.string,
-    React.PropTypes.number
-  ])
+    React.PropTypes.number,
+    React.PropTypes.array
+  ]),
+  customModalPicker:React.PropTypes.node,
+  multiSelect:React.PropTypes.bool
 }
 
 Select.defaultProps = {
@@ -179,7 +219,8 @@ Select.defaultProps = {
   placeholder: '',
   labelKey: 'label',
   valueKey: 'value',
-  value: ''
+  value: '',
+  multiSelect: false
 }
 
 export default Select

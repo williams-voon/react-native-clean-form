@@ -9,6 +9,7 @@ import Label from './src/Label'
 import Select from './src/Select'
 import Switch from './src/Switch'
 import Theme from './src/Theme'
+import ColorSelect from './src/ColorSelect'
 
 export {
   ActionsContainer,
@@ -21,5 +22,6 @@ export {
   Label,
   Select,
   Switch,
-  Theme
+  Theme,
+  ColorSelect
 }

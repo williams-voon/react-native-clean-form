@@ -1,42 +1,103 @@
 {
-  "name": "react-native-clean-form",
-  "version": "0.4.2",
+  "_args": [
+    [
+      {
+        "raw": "https://github.com/williams-voon/react-native-clean-form.git",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "https://github.com/williams-voon/react-native-clean-form.git",
+        "spec": "git+https://github.com/williams-voon/react-native-clean-form.git",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:williams-voon/react-native-clean-form.git",
+          "sshUrl": "git+ssh://git@github.com/williams-voon/react-native-clean-form.git",
+          "httpsUrl": "git+https://github.com/williams-voon/react-native-clean-form.git",
+          "gitUrl": "git://github.com/williams-voon/react-native-clean-form.git",
+          "shortcut": "github:williams-voon/react-native-clean-form",
+          "directUrl": "https://raw.githubusercontent.com/williams-voon/react-native-clean-form/master/package.json"
+        }
+      },
+      "/Users/apple/Documents/workspace/react-native/fzbdemo"
+    ]
+  ],
+  "_from": "git+https://github.com/williams-voon/react-native-clean-form.git",
+  "_id": "react-native-clean-form@0.4.2",
+  "_inCache": true,
+  "_location": "/react-native-clean-form",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "https://github.com/williams-voon/react-native-clean-form.git",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "https://github.com/williams-voon/react-native-clean-form.git",
+    "spec": "git+https://github.com/williams-voon/react-native-clean-form.git",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:williams-voon/react-native-clean-form.git",
+      "sshUrl": "git+ssh://git@github.com/williams-voon/react-native-clean-form.git",
+      "httpsUrl": "git+https://github.com/williams-voon/react-native-clean-form.git",
+      "gitUrl": "git://github.com/williams-voon/react-native-clean-form.git",
+      "shortcut": "github:williams-voon/react-native-clean-form",
+      "directUrl": "https://raw.githubusercontent.com/williams-voon/react-native-clean-form/master/package.json"
+    }
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/williams-voon/react-native-clean-form.git#b55a51ee0e57339440daaf9618c5325d374998e0",
+  "_shasum": "c73c8dc20f73160c8b5297be859e35bbdc7f5d4d",
+  "_shrinkwrap": null,
+  "_spec": "https://github.com/williams-voon/react-native-clean-form.git",
+  "_where": "/Users/apple/Documents/workspace/react-native/fzbdemo",
+  "author": {
+    "name": "Esben Petersen",
+    "email": "esbenspetersen@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/esbenp/react-native-clean-form/issues"
+  },
+  "dependencies": {
+    "react-native-vector-icons": ">=4.0.0",
+    "styled-components": ">=1.4"
+  },
   "description": "An example of creating mobile forms with React Native, styled-components and redux-form",
-  "main": "index.js",
+  "devDependencies": {
+    "react-native": "~0.40.0"
+  },
   "directories": {
     "example": "example"
   },
-  "scripts": {
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/esbenp/react-native-clean-form.git"
-  },
+  "files": [
+    "src",
+    "redux-form.js",
+    "redux-form-immutable.js"
+  ],
+  "gitHead": "b55a51ee0e57339440daaf9618c5325d374998e0",
+  "homepage": "https://github.com/esbenp/react-native-clean-form#readme",
   "keywords": [
     "react-native",
     "redux-form",
     "immutable.js",
     "styled-components"
   ],
-  "author": "Esben Petersen <esbenspetersen@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/esbenp/react-native-clean-form/issues"
-  },
-  "homepage": "https://github.com/esbenp/react-native-clean-form#readme",
-  "files": [
-    "src",
-    "redux-form.js",
-    "redux-form-immutable.js"
-  ],
-  "devDependencies": {
-    "react-native": "~0.40.0"
-  },
+  "main": "index.js",
+  "name": "react-native-clean-form",
+  "optionalDependencies": {},
   "peerDependencies": {
     "react-native": "*"
   },
-  "dependencies": {
-    "styled-components": ">=1.4",
-    "react-native-vector-icons": ">=4.0.0"
-  }
+  "readme": "# react-native-clean-form\n\nEasy react-native forms using bootstrap-like syntax with redux-form+immutablejs integration. Styled using styled-components\n\n## Big kudos to Artyom Khamitov\n\n**The look of the form was [inspired by this shot by Artyom Khamitov](https://dribbble.com/shots/3151351-Checkout-form).\n[Check out his profile on Dribbble](https://dribbble.com/gmax).**\n\n---\n\n<img align=\"right\" src=\"docs/stacked.jpg\" width=\"275\">\n<img align=\"right\" src=\"docs/normal.jpg\" width=\"275\">\n\n* Form elements with syntax inspired by Bootstrap\n* Styled using [styled-components](https://github.com/styled-components/styled-components). Easily extendible.\n* Integrated with [redux-form](https://github.com/erikras/redux-form)\n* Supports [immutable.js](https://github.com/facebook/immutable-js) state\n\n<br><br><br><br><br><br><br><br><br><br><br><br><br><br>\n\n---\n\n## Installation\n\nRun `npm install --save react-native-clean-form`\n\nThe form uses `react-native-vector-icons` so it is important the fonts are linked by using `react-native link` \n[or one of the other options available](https://github.com/oblador/react-native-vector-icons#ios).\n\n## Example\n\n[I have written an article on my blog about React Native and redux-form](http://esbenp.github.io/2017/01/06/react-native-redux-form-immutable-styled-components/)\n\n**[For a complete example check out the example folder](https://github.com/esbenp/react-native-clean-form/tree/master/example)**\n\n## Usage\n\n```javascript\nimport {\n  ActionsContainer,\n  Button,\n  FieldsContainer,\n  Fieldset,\n  Form,\n  FormGroup,\n  Input,\n  Label,\n  Switch\n} from 'react-native-clean-form'\n\nconst FormView = props => (\n  <Form>\n    <FieldsContainer>\n      <Fieldset label=\"Contact details\">\n        <FormGroup>\n          <Label>First name</Label>\n          <Input placeholder=\"Esben\" onChangeText={this.onFirstNameChange} />\n        </FormGroup>\n        <FormGroup>\n          <Label>Email</Label>\n          <Input placeholder=\"esbenspetersen@gmail.com\" onChangeText={this.onEmailChange} />\n        </FormGroup>\n      </Fieldset>\n      <Fieldset label=\"Password\" last>\n        <FormGroup>\n          <Label>Password</Label>\n          <Input placeholder=\"Enter a password\" onChangeText={this.onPasswordChange} />\n        </FormGroup>\n        <FormGroup>\n          <Label>Repeat password</Label>\n          <Input placeholder=\"Repeat your password\" onChangeText={this.onRepeatPasswordChange} />\n        </FormGroup>\n        <FormGroup border={false}>\n          <Label>Save my password</Label>\n          <Switch onValueChange={this.toggleSaveMyPassword} />\n        </FormGroup>     \n      </Fieldset>\n    </FieldsContainer>\n    <ActionsContainer>\n      <Button icon=\"md-checkmark\" iconPlacement=\"right\" onPress={this.save}>Save</Button>\n    </ActionsContainer>\n  </Form>\n)\n```\n\n## Usage with redux-form\n\n```javascript\nimport React from 'react'\nimport { reduxForm } from 'redux-form'\nimport {\n  ActionsContainer,\n  Button,\n  FieldsContainer,\n  Fieldset,\n  Form,\n  FormGroup,\n  Label,\n} from 'react-native-clean-form'\nimport {\n  Input,\n  Switch\n} from 'react-native-clean-form/redux-form'\nimport { View,Text } from 'react-native'\n\nconst onSubmit = (values, dispatch) => {\n  return new Promise((resolve) => {\n    setTimeout(() => {\n      console.log(values)\n      resolve()\n    }, 1500)\n  })\n}\n\nconst FormView = props => {\n  const { handleSubmit, submitting } = this.props\n\n  return (\n    <Form>\n      <FieldsContainer>\n        <Fieldset label=\"Contact details\">\n          <Input name=\"first_name\" label=\"First name\" placeholder=\"John\" />\n          <Input name=\"email\" label=\"Email\" placeholder=\"something@domain.com\" />\n        </Fieldset>\n        <Fieldset label=\"Shipping details\" last>\n          <Input name=\"password\" label=\"Address\" placeholder=\"Hejrevej 33\" />\n          <Input name=\"password_repeat\" label=\"City\" placeholder=\"Copenhagen\" />\n          <Switch label=\"Save my details\" border={false} name=\"save_details\" />\n        </Fieldset>\n      </FieldsContainer>\n      <ActionsContainer>\n        <Button icon=\"md-checkmark\" iconPlacement=\"right\" onPress={handleSubmit(onSubmit)} submitting={submitting}>Save</Button>\n      </ActionsContainer>\n    </Form>\n  )\n}\n\nexport default reduxForm({\n  form: 'Form'\n})(FormView)\n```\n\n## Usage with redux-form and Immutable.js\n\nTo make it work with Immutable.js import `Input`, `Select`, and `Switch` from `react-native-clean-form/redux-form-immutable` \ninstead of `react-native-clean-form/redux-form`. \n[Also, check out the included example](https://github.com/esbenp/react-native-clean-form/tree/master/example)\n\n## Validation\n\n<img align=\"right\" src=\"docs/validation.jpg\" width=\"375\">\n\nIf integrating with `redux-form` validation is supported right out of the box. Just add a `validation` key to `reduxForm` \nyour normally would.\n\nIf not using `redux-form`, there is an `error` prop on `FormGroup` which will display the error if used.\n\n<br><br><br><br>\n\n## Async feedback\n\n<img align=\"right\" src=\"docs/async_feedback.jpg\" width=\"375\">\n\nThe `Button` component has a `submitting` prop. If true, a spinner will be displayed.\n\n<br><br><br><br>\n\n## Run the example\n\nClone the repo first.\n\n```\ngit clone https://github.com/esbenp/react-native-clean-form && cd react-native-clean-form\n```\n\nInstall dependencies.\n\n```\ncd example\nnpm install\n```\n\nRun the simulator.\n\n```\nreact-native run-ios\n```\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/esbenp/react-native-clean-form.git"
+  },
+  "scripts": {},
+  "version": "0.4.2"
 }

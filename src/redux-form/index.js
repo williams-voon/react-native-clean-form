@@ -5,11 +5,13 @@ import { Field } from 'redux-form'
 const {
   Input,
   Select,
-  Switch
+  Switch,
+  ColorSelect
 } = createInputs(createInputCreator(Field))
 
 export {
   Input,
   Select,
-  Switch
+  Switch,
+  ColorSelect
 }
