@@ -1,0 +1,192 @@
+'use strict';
+
+import React,{
+    PropTypes,Component
+} from 'react';
+
+import {
+    View,
+    StyleSheet,
+    Dimensions,
+    Modal,
+    Text,
+    ScrollView,
+    Platform,
+    Switch,
+    TouchableOpacity
+} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+
+import styles from './FcSelectStyle';
+
+const propTypes = {
+    data: PropTypes.array,
+    onChange: PropTypes.func,
+    initValue: React.PropTypes.string,
+    style: View.propTypes.style,
+    selectStyle: View.propTypes.style,
+    optionStyle: View.propTypes.style,
+    optionTextStyle: Text.propTypes.style,
+    sectionStyle: View.propTypes.style,
+    sectionTextStyle: Text.propTypes.style,
+    cancelStyle: View.propTypes.style,
+    cancelTextStyle: Text.propTypes.style,
+    overlayStyle: View.propTypes.style,
+    cancelText: PropTypes.string,
+    comfirmText: PropTypes.string
+};
+
+const defaultProps = {
+    data: [],
+    onChange: (item,checked)=> {},
+    initValue: '',
+    style: {},
+    selectStyle: {},
+    optionStyle: {},
+    optionTextStyle: {},
+    sectionStyle: {},
+    sectionTextStyle: {},
+    cancelStyle: {},
+    cancelTextStyle: {},
+    overlayStyle: {},
+    cancelText: 'cancel',
+    comfirmText: 'OK'
+};
+
+export default class FcModalMultiPicker extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            animationType: 'slide',
+            transparent: false,
+            selected: [],
+        };
+    }
+    componentDidMount() {
+      if(this.props.initValue){
+        let strs=this.props.initValue.split(",")
+        this.setState({selected: strs});
+      }
+      this.setState({cancelText: this.props.cancelText});
+    }
+
+    componentWillReceiveProps(nextProps) {
+      if (nextProps.initValue != this.props.initValue) {
+        if(nextProps.initValue){
+          let strs=nextProps.initValue.split(",")
+          this.setState({selected: strs});
+        }
+      }
+    }
+
+    toggleValue(item){
+      if(this.state.selected.includes(item.value)){
+        let newVal=this.state.selected.reduce((carry,current)=>{
+          if(item.value==current){
+            return carry;
+          }
+          return [...carry, current ]
+        },[]);
+        this.setState({selected:newVal});
+      }else{
+          this.setState({selected: [...this.state.selected,item.value]});
+      }
+    }
+    confirm(){
+      let newVal=''
+      if(this.state.selected){
+        newVal=this.state.selected.reduce((carry, option) => {
+          if(carry.length>0){
+            carry=carry+','+option
+          }else{
+            carry=option
+          }
+          return carry
+        }, '')
+      }
+      this.props.onChange(newVal);
+      this.props.onRequestClose();
+    }
+    cancel(){
+      if(this.props.initValue){
+        let strs=this.props.initValue.split(",")
+        this.setState({selected: strs});
+      }
+      this.props.onRequestClose();
+    }
+
+    renderSection(section) {
+        return (
+            <View key={section.key} style={[styles.sectionStyle,this.props.sectionStyle]}>
+                <Text style={[styles.sectionTextStyle,this.props.sectionTextStyle]}>{section.label}</Text>
+            </View>
+        );
+    }
+
+    renderOption(option) {
+      let selected={}
+      let checked=false;
+      if(this.state.selected.includes(option.value)){
+        selected=styles.selectedOptionTextStyle
+        checked=true
+      }
+      return (
+          <View key={option.value}>
+            <TouchableOpacity  style={[styles.optionWrapperStyle, this.props.optionWrapperStyle]} onPress={()=>{this.toggleValue(option);}}>
+              <View style={{width:30}}>
+                { checked && <Icon name={ 'md-checkmark' } size={18} color={'black'} />  }
+              </View>
+              <Text style={[styles.optionTextStyle,this.props.optionTextStyle,selected,{flex:1}]}>{option.label}</Text>
+              { option.rgbColor && <View style={{borderRadius:11,width:22,height:22,backgroundColor:option.rgbColor}}></View> }
+            </TouchableOpacity>
+          </View>
+        )
+    }
+
+    renderOptionList() {
+        var options = this.props.data.map((item) => {
+            if (item.section) {
+                return this.renderSection(item);
+            } else {
+                return this.renderOption(item);
+            }
+        });
+        return (
+            <View style={[styles.overlayStyle, this.props.overlayStyle]} >
+                <View style={styles.optionContainer}>
+                    <ScrollView>
+                        <View >
+                          {options}
+                        </View>
+                    </ScrollView>
+
+                </View>
+                 <View style={styles.cancelComfirmContainer}>
+                    <TouchableOpacity style={styles.cancelConfirmButtonStyle} onPress={this.cancel.bind(this)}>
+                        <View style={[styles.cancelButtonStyle, this.props.cancelButtonStyle]}>
+                            <Text style={[styles.cancelTextStyle,this.props.cancelTextStyle]}>{this.props.cancelText}</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.cancelConfirmButtonStyle} onPress={this.confirm.bind(this)}>
+                        <View style={[styles.confirmButtonStyle, this.props.confirmButtonStyle]}>
+                            <Text style={[styles.confirmTextStyle,this.props.confirmTextStyle]}>{this.props.comfirmText}</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+
+           </View>
+    );
+    }
+
+    render() {
+        return (
+          <Modal transparent={true} visible={this.props.visible} onRequestClose={this.props.onRequestClose} animationType={this.state.animationType}>
+            {this.renderOptionList()}
+          </Modal>
+        );
+    }
+}
+
+FcModalMultiPicker.propTypes = propTypes;
+FcModalMultiPicker.defaultProps = defaultProps;
