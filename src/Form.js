@@ -30,9 +30,9 @@ class Form extends Component {
           <KeyboardAwareScrollView contentContainerStyle={{ minHeight: this.state.height }}
             ref='scrollView'
             onContentSizeChange={(contentWidth, contentHeight)=>{
-              //this.refs.scrollView.scrollTo({x:0, y:0,animated:false});
               if(this.scrollToTopDone==false){
                 this.scrollToTopDone=true;
+          //      this.refs.scrollView.scrollTo({x:0, y:0,animated:false});
                 this.refs.scrollView.scrollToPosition(0,0,false)
               }
             }}>

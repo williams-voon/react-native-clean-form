@@ -65,6 +65,25 @@ StyledInput.defaultProps = {
 }
 
 class Input extends React.Component {
+  constructor(props) {
+          super(props);
+          this.state = {
+            text:this.props.defaultValue?this.props.defaultValue:(this.props.value?this.props.value:'')
+          }
+  }
+  onChangeText(text) {
+      setTimeout(() => {this.setState({ text: text })})
+      //console.log(text);
+  }
+  onChange(evt){
+    this.setState({ text: evt.nativeEvent.text })
+    //console.log('onChange',evt.nativeEvent.text);
+  }
+  onEndEditing(evt){
+    this.setState({ text: evt.nativeEvent.text })
+    //console.log('onEndEditing',evt.nativeEvent.text);
+    this.props.onChangeText( evt.nativeEvent.text )
+  }
   render() {
     return (
       <InputWrapper
@@ -75,7 +94,12 @@ class Input extends React.Component {
           inlineLabel={this.props.inlineLabel}
           placeholderTextColor={this.props.theme.BaseInput.placeholderColor}
           underlineColorAndroid='transparent'
-          {...this.props}/>
+          {...this.props}
+          value={this.state.text}
+          onChangeText={this.onChangeText.bind(this)}
+          onChange={this.onChange.bind(this)}
+          onEndEditing={this.onEndEditing.bind(this)  }
+        />
       </InputWrapper>
     )
   }
