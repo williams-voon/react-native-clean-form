@@ -71,6 +71,11 @@ class Input extends React.Component {
             text:this.props.defaultValue?this.props.defaultValue:(this.props.value?this.props.value:'')
           }
   }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.value !== this.state.text) {
+      this.onChangeText(nextProps.value)
+    }
+  }
   onChangeText(text) {
       setTimeout(() => {this.setState({ text: text })})
       //console.log(text);
