@@ -59,4 +59,13 @@ const Theme = {
   }
 }
 
+const BoldTheme = {
+  Label: {
+    color: '#333333', //'#bfc2c9',
+    fontSize: 12,
+    fontWeight: 'bold',
+  },
+}
+
 export default Theme
+export {BoldTheme}

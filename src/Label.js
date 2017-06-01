@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, View, Platform } from 'react-native'
 import styled from 'styled-components/native'
-import defaultTheme from './Theme'
+import defaultTheme,{BoldTheme} from './Theme'
 
 const LabelWrapper = styled.View`
   flex: ${props => props.inlineLabel ? 0.5 : 1};
@@ -15,6 +15,7 @@ const LabelWrapper = styled.View`
 const LabelText = styled.Text`
   color: ${props => props.theme.Label.color};
   font-size: ${props => props.theme.Label.fontSize};
+  fontWeight: ${props => props.theme.Label.fontWeight};
 `
 
 LabelText.defaultProps = {
@@ -24,10 +25,17 @@ LabelText.defaultProps = {
 
 const Label = props => {
   const { children, inlineLabel, theme } = props
-
+  let textTheme = theme
+  let children2=children
+  if (typeof children == 'string'){
+    if(children.slice(-1) == '*'){
+      children2=children.slice(0,-1)
+      textTheme=BoldTheme
+    }
+  }
   return (
     <LabelWrapper inlineLabel={inlineLabel} theme={theme}>
-      <LabelText inlineLabel={inlineLabel} theme={theme} >{ children }</LabelText>
+      <LabelText inlineLabel={inlineLabel} theme={textTheme} >{ children2 }</LabelText>
     </LabelWrapper>
   )
 }
