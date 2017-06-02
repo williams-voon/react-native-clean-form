@@ -1,5 +1,5 @@
 import React from 'react'
-import {TextInput, View} from 'react-native'
+import {TextInput, View,Platform} from 'react-native'
 import styled from 'styled-components/native'
 import defaultTheme from './Theme'
 
@@ -72,9 +72,9 @@ class Input extends React.Component {
           }
   }
   componentWillReceiveProps(nextProps) {
-  //  if (nextProps.value !== this.state.text) {
+    if (nextProps.value !== this.state.text) {
       this.onChangeText(nextProps.value)
-  //  }
+    }
   }
   onChangeText(text) {
       setTimeout(() => {this.setState({ text: text })})
@@ -95,16 +95,29 @@ class Input extends React.Component {
         inlineLabel={this.props.inlineLabel}
         multiline={this.props.multiline}
         numberOfLines={this.props.numberOfLines}>
-        <StyledInput
-          inlineLabel={this.props.inlineLabel}
-          placeholderTextColor={this.props.theme.BaseInput.placeholderColor}
-          underlineColorAndroid='transparent'
-          {...this.props}
-          value={this.state.text}
-          onChangeText={this.onChangeText.bind(this)}
-          onChange={this.onChange.bind(this)}
-          onEndEditing={this.onEndEditing.bind(this)  }
-        />
+        {
+          Platform.OS === 'android'?(
+          <StyledInput
+            inlineLabel={this.props.inlineLabel}
+            placeholderTextColor={this.props.theme.BaseInput.placeholderColor}
+            underlineColorAndroid='transparent'
+            {...this.props}
+          />
+
+          ):(
+          <StyledInput
+            inlineLabel={this.props.inlineLabel}
+            placeholderTextColor={this.props.theme.BaseInput.placeholderColor}
+            underlineColorAndroid='transparent'
+            {...this.props}
+            value={this.state.text}
+            onChangeText={this.onChangeText.bind(this)}
+            onChange={this.onChange.bind(this)}
+            onEndEditing={this.onEndEditing.bind(this)  }
+          />
+
+          )
+        }
       </InputWrapper>
     )
   }

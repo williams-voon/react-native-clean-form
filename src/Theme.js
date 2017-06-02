@@ -52,7 +52,8 @@ const Theme = {
   Label: {
     color: '#7d7f84', //'#bfc2c9',
     fontSize: 12,
-    stackedHeight: 40
+    stackedHeight: 40,
+    fontWeight: 'normal',
   },
   Select: {
 
