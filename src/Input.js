@@ -72,9 +72,9 @@ class Input extends React.Component {
           }
   }
   componentWillReceiveProps(nextProps) {
-    if (nextProps.value !== this.state.text) {
+  //  if (nextProps.value !== this.state.text) {
       this.onChangeText(nextProps.value)
-    }
+  //  }
   }
   onChangeText(text) {
       setTimeout(() => {this.setState({ text: text })})
