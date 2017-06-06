@@ -16,7 +16,7 @@ import {
     ViewPropTypes
 } from 'react-native';
 
-import styles from './FcSelectStyle';
+import styles,{OPTION_CONTAINER_HEIGHT, TOP} from './FcSelectStyle';
 
 
 const propTypes = {
@@ -109,11 +109,18 @@ export default class FcModalPicker extends Component {
                 return this.renderOption(item);
             }
         });
-
+        let height=OPTION_CONTAINER_HEIGHT
+        let marginTop=TOP
+        let showsVerticalScrollIndicator=true
+        if(height>(this.props.data.length)*39){
+          height = (this.props.data.length)*39
+          marginTop += (OPTION_CONTAINER_HEIGHT-height)
+          showsVerticalScrollIndicator=false
+        }
         return (
             <View style={[styles.overlayStyle, this.props.overlayStyle]}>
-                <View style={styles.optionContainer}>
-                    <ScrollView keyboardShouldPersistTaps={'always'}>
+                <View style={[styles.optionContainer,{height:height,marginTop:marginTop}]}>
+                    <ScrollView showsVerticalScrollIndicator={showsVerticalScrollIndicator} keyboardShouldPersistTaps={'always'}>
                         <View style={{paddingHorizontal:10}}>
                             {options}
                         </View>

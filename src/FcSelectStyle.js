@@ -132,3 +132,5 @@ export default StyleSheet.create({
         fontSize: FONT_SIZE
     }
 });
+
+export {OPTION_CONTAINER_HEIGHT, TOP}

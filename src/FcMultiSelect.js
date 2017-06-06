@@ -18,7 +18,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import styles from './FcSelectStyle';
+import styles,{OPTION_CONTAINER_HEIGHT, TOP} from './FcSelectStyle';
 
 const propTypes = {
     data: PropTypes.array,
@@ -65,8 +65,12 @@ export default class FcModalMultiPicker extends Component {
         };
     }
     filterInitialValue(strs){
+      let options = this.props.data.reduce((carry,current)=>{
+        carry.push(current.value)
+        return carry;
+      },[])
       return strs.reduce((carry,current)=>{
-        if(this.props.data.includes(current.value)){
+        if(options.includes(current)){
           carry.push(current)
         }
         return carry;
@@ -164,10 +168,18 @@ export default class FcModalMultiPicker extends Component {
                 return this.renderOption(item);
             }
         });
+        let height=OPTION_CONTAINER_HEIGHT
+        let marginTop=TOP
+        let showsVerticalScrollIndicator=true
+        if(height>(this.props.data.length)*39){
+          height = (this.props.data.length)*39
+          marginTop += (OPTION_CONTAINER_HEIGHT-height)
+          showsVerticalScrollIndicator=false
+        }
         return (
             <View style={[styles.overlayStyle, this.props.overlayStyle]} >
-                <View style={styles.optionContainer}>
-                    <ScrollView>
+                <View style={[styles.optionContainer,{height:height,marginTop:marginTop}]}>
+                    <ScrollView showsVerticalScrollIndicator={showsVerticalScrollIndicator}>
                         <View >
                           {options}
                         </View>
