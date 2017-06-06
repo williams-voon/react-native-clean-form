@@ -114,10 +114,12 @@ class Select extends Component {
     if (value) {
       if(multiSelect){
         label=value.split(",").reduce((carry, option) => {
-          if(carry.length>0){
-            carry=carry+','+labelsByValue[option]
-          }else{
-            carry=labelsByValue[option]
+          if(labelsByValue[option]){
+            if(carry.length>0){
+              carry=carry+','+labelsByValue[option]
+            }else{
+              carry=labelsByValue[option]
+            }
           }
           return carry
         }, '')

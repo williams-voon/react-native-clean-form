@@ -64,9 +64,18 @@ export default class FcModalMultiPicker extends Component {
             selected: [],
         };
     }
+    filterInitialValue(strs){
+      return strs.reduce((carry,current)=>{
+        if(this.props.data.includes(current.value)){
+          carry.push(current)
+        }
+        return carry;
+      },[])
+    }
     componentDidMount() {
       if(this.props.initValue){
         let strs=this.props.initValue.split(",")
+        strs=this.filterInitialValue(strs)
         this.setState({selected: strs});
       }
       this.setState({cancelText: this.props.cancelText});
@@ -76,6 +85,7 @@ export default class FcModalMultiPicker extends Component {
       if (nextProps.initValue != this.props.initValue) {
         if(nextProps.initValue){
           let strs=nextProps.initValue.split(",")
+          strs=this.filterInitialValue(strs)
           this.setState({selected: strs});
         }
       }
@@ -112,6 +122,7 @@ export default class FcModalMultiPicker extends Component {
     cancel(){
       if(this.props.initValue){
         let strs=this.props.initValue.split(",")
+        strs=this.filterInitialValue(strs)
         this.setState({selected: strs});
       }
       this.props.onRequestClose();
