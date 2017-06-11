@@ -7,7 +7,8 @@ import {
   Input as InputRenderer,
   Select as SelectRenderer,
   Switch as SwitchRenderer,
-  ColorSelect as ColorSelectRenderer
+  ColorSelect as ColorSelectRenderer,
+  SelectWrap as SelectWrapRenderer
 } from '../../index'
 
 const createInputs = inputCreator => {
@@ -49,11 +50,25 @@ const createInputs = inputCreator => {
     )
   const ColorSelect = inputCreator('ColorSelect', renderColorSelect, ColorSelectRenderer.PropTypes, ColorSelectRenderer.defaultProps)
 
+  const renderSelectWrap = ({ input: { onChange, value }, valueKey, placeholder,onSelectAction,valueDesc }) => (
+      <SelectWrapRenderer
+        onValueChange={onChange}
+        placeholder={placeholder}
+        onSelectAction={onSelectAction}
+        valueDesc={valueDesc}
+        value={value}
+      />
+    )
+  const SelectWrap = inputCreator('SelectWrap', renderSelectWrap, SelectWrapRenderer.PropTypes, SelectWrapRenderer.defaultProps)
+
+
+
   return {
     Input,
     Select,
     Switch,
-    ColorSelect
+    ColorSelect,
+    SelectWrap
   }
 }
 

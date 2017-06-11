@@ -6,12 +6,14 @@ const {
   Input,
   Select,
   Switch,
-  ColorSelect
+  ColorSelect,
+  SelectWrap
 } = createInputs(createInputCreator(Field))
 
 export {
   Input,
   Select,
   Switch,
-  ColorSelect
+  ColorSelect,
+  SelectWrap
 }

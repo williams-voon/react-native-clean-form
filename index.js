@@ -10,6 +10,7 @@ import Select from './src/Select'
 import Switch from './src/Switch'
 import Theme from './src/Theme'
 import ColorSelect from './src/ColorSelect'
+import SelectWrap from './src/SelectWrap'
 
 export {
   ActionsContainer,
@@ -23,5 +24,6 @@ export {
   Select,
   Switch,
   Theme,
-  ColorSelect
+  ColorSelect,
+  SelectWrap
 }
