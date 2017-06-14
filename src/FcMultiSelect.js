@@ -59,7 +59,7 @@ export default class FcModalMultiPicker extends Component {
     constructor() {
         super();
         this.state = {
-            animationType: 'slide',
+            animationType: 'none',// 'slide',
             transparent: false,
             selected: [],
         };
@@ -215,7 +215,8 @@ export default class FcModalMultiPicker extends Component {
 
     render() {
         return (
-          <Modal transparent={true} visible={this.props.visible} onRequestClose={this.props.onRequestClose} animationType={this.state.animationType}>
+          <Modal transparent={true} visible={this.props.visible}
+            onRequestClose={this.props.onRequestClose} animationType={this.state.animationType}>
             {this.renderOptionList()}
           </Modal>
         );

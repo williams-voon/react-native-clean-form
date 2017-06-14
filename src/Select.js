@@ -176,7 +176,7 @@ class Select extends Component {
            onChange={this.onValueChange}
            cancelText="取消"
            initValue={value}
-           addItemFunc={()=>{addItemFunc(this.toggleSelector)}}
+           addItemFunc={addItemFunc!=undefined?()=>{addItemFunc(this.toggleSelector)}: null }
          />
 
          <TouchableOpacity onPress={this.toggleSelector}>

@@ -58,7 +58,7 @@ export default class FcModalPicker extends Component {
         super();
         this.onChange=this.onChange.bind(this);
         this.state = {
-            animationType: 'slide',
+            animationType:'none',// 'slide',
             transparent: false,
             selected: ''
         };
