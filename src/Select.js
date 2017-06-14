@@ -27,8 +27,9 @@ const LabelIconWrapper = styled.View`
   justify-content: center;
   align-items: center;
   flex-direction:row;
-  height: ${props => props.inlineLabel ? props.theme.FormGroup.height - props.theme.FormGroup.borderWidth*2 : props.theme.FormGroup.height-HaveNoIdeaWhyThisIsNeeded};
 `
+
+//height: ${props => props.inlineLabel ? props.theme.FormGroup.height - props.theme.FormGroup.borderWidth*2 : props.theme.FormGroup.height-HaveNoIdeaWhyThisIsNeeded};
 
 LabelIconWrapper.defaultProps = {
   theme: defaultTheme
@@ -36,8 +37,9 @@ LabelIconWrapper.defaultProps = {
 
 const SelectWrapper = styled.View`
   flex: ${props => props.inlineLabel ? .5 : 1};
-  height: ${props => props.inlineLabel ? props.theme.FormGroup.height - props.theme.FormGroup.borderWidth*2 : props.theme.FormGroup.height-HaveNoIdeaWhyThisIsNeeded};
 `
+
+//height: ${props => props.inlineLabel ? props.theme.FormGroup.height - props.theme.FormGroup.borderWidth*2 : props.theme.FormGroup.height-HaveNoIdeaWhyThisIsNeeded};
 
 SelectWrapper.defaultProps = {
   theme: defaultTheme
@@ -50,6 +52,8 @@ const Icon = styled(BaseIcon)`
 
 const SelectPlaceholder = styled.Text`
   color: ${props => props.theme.BaseInput.placeholderColor};
+  margin-bottom: 5;
+  fontSize: ${props => props.theme.BaseInput.fontSize};
 `
 
 SelectPlaceholder.defaultProps = {
@@ -101,18 +105,20 @@ class Select extends Component {
       theme,
       customModalPicker,
       multiSelect,
+      addItemFunc,
       ...rest
     } = this.props
     const { showSelector, value } = this.state
 
     const labelsByValue = options.reduce((carry, option) => {
-      carry[option.value] = option.label
+      carry[option.value] = option
       return carry
     }, {})
 
     let label = <SelectPlaceholder>{ placeholder }</SelectPlaceholder>
     if (value) {
       if(multiSelect){
+        /*
         label=value.split(",").reduce((carry, option) => {
           if(labelsByValue[option]){
             if(carry.length>0){
@@ -123,8 +129,39 @@ class Select extends Component {
           }
           return carry
         }, '')
+        */
+        let items=value.split(",").reduce((carry, option) => {
+          if(labelsByValue[option]){
+            carry.push(labelsByValue[option])
+            return carry
+          }
+        }, [])
+        label = items.map((item,i)=>{
+          let fontColor='black'
+          let backgroundColor='white'
+          let borderColor:'lightgrey'
+          if(item.rgbColor){
+            backgroundColor=item.rgbColor
+            borderColor='white'
+            let sColorChange = [];
+            for(let i=1; i<7; i+=2){
+                 sColorChange.push(parseInt("0x"+item.rgbColor.slice(i,i+2)));
+            }
+            if(sColorChange[0]+sColorChange[1]+sColorChange[2]<128*3-1){
+              fontColor='white'
+            }
+          }
+          return (
+            <View key={i} style={{padding:4,borderWidth:1,marginRight:5,marginTop:1,
+               marginBottom:4 ,borderRadius: 5, borderColor:borderColor, backgroundColor: backgroundColor}}>
+              <Text style={{color:fontColor,backgroundColor:'transparent'
+               }}>{item.label}
+              </Text>
+            </View>
+          );
+        })
       }else{
-        label = labelsByValue[value]
+        label = labelsByValue[value].label
       }
     }
     if (customModalPicker){
@@ -139,11 +176,18 @@ class Select extends Component {
            onChange={this.onValueChange}
            cancelText="取消"
            initValue={value}
+           addItemFunc={()=>{addItemFunc(this.toggleSelector)}}
          />
 
          <TouchableOpacity onPress={this.toggleSelector}>
            <LabelIconWrapper inlineLabel={inlineLabel}>
-             <SelectLabel inlineLabel={inlineLabel}>{ label }</SelectLabel>
+             {
+               multiSelect?(
+                 <View style={{flexDirection:'row', flexWrap: 'wrap', flex:1}}>
+                   {label}
+                 </View>
+               ):(<SelectLabel inlineLabel={inlineLabel}>{ label }</SelectLabel>)
+             }
              <Icon name="ios-arrow-down" />
            </LabelIconWrapper>
          </TouchableOpacity>

@@ -178,26 +178,36 @@ export default class FcModalMultiPicker extends Component {
         }
         return (
             <View style={[styles.overlayStyle, this.props.overlayStyle]} >
-                <View style={[styles.optionContainer,{height:height,marginTop:marginTop}]}>
-                    <ScrollView showsVerticalScrollIndicator={showsVerticalScrollIndicator}>
-                        <View >
-                          {options}
-                        </View>
-                    </ScrollView>
+              {
+                this.props.addItemFunc!=undefined&&
+                <View style={styles.addItemButton}>
+                  <TouchableOpacity onPress={()=>{
+                    this.props.onRequestClose()
+                    this.props.addItemFunc()}}>
+                    <Icon name={ 'md-add' } size={26} style={{height:26}} color={'white'} />
+                  </TouchableOpacity>
+                </View>
+              }
+              <View style={[styles.optionContainer,{height:height,marginTop:marginTop}]}>
+                  <ScrollView showsVerticalScrollIndicator={showsVerticalScrollIndicator}>
+                      <View >
+                        {options}
+                      </View>
+                  </ScrollView>
 
-                </View>
-                 <View style={styles.cancelComfirmContainer}>
-                    <TouchableOpacity style={styles.cancelConfirmButtonStyle} onPress={this.cancel.bind(this)}>
-                        <View style={[styles.cancelButtonStyle, this.props.cancelButtonStyle]}>
-                            <Text style={[styles.cancelTextStyle,this.props.cancelTextStyle]}>{this.props.cancelText}</Text>
-                        </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.cancelConfirmButtonStyle} onPress={this.confirm.bind(this)}>
-                        <View style={[styles.confirmButtonStyle, this.props.confirmButtonStyle]}>
-                            <Text style={[styles.confirmTextStyle,this.props.confirmTextStyle]}>{this.props.comfirmText}</Text>
-                        </View>
-                    </TouchableOpacity>
-                </View>
+              </View>
+               <View style={styles.cancelComfirmContainer}>
+                  <TouchableOpacity style={styles.cancelConfirmButtonStyle} onPress={this.cancel.bind(this)}>
+                      <View style={[styles.cancelButtonStyle, this.props.cancelButtonStyle]}>
+                          <Text style={[styles.cancelTextStyle,this.props.cancelTextStyle]}>{this.props.cancelText}</Text>
+                      </View>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.cancelConfirmButtonStyle} onPress={this.confirm.bind(this)}>
+                      <View style={[styles.confirmButtonStyle, this.props.confirmButtonStyle]}>
+                          <Text style={[styles.confirmTextStyle,this.props.confirmTextStyle]}>{this.props.comfirmText}</Text>
+                      </View>
+                  </TouchableOpacity>
+              </View>
 
            </View>
     );

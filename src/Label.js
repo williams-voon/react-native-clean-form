@@ -14,6 +14,8 @@ const LabelWrapper = styled.View`
 
 const LabelText = styled.Text`
   color: ${props => props.theme.Label.color};
+  margin-top: 5;
+  margin-bottom: 5;
   font-size: ${props => props.theme.Label.fontSize};
   fontWeight: ${props => props.theme.Label.fontWeight};
 `

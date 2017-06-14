@@ -44,7 +44,7 @@ const Theme = {
   BaseInput: {
     placeholderColor: '#c9c9c9',
     fontSize: 12,
-    lineHeight: 18
+    lineHeight: 12
   },
   Input: {
     color: '#313131',

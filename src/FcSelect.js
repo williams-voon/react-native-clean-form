@@ -15,6 +15,7 @@ import {
     Platform,
     ViewPropTypes
 } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import styles,{OPTION_CONTAINER_HEIGHT, TOP} from './FcSelectStyle';
 
@@ -119,20 +120,30 @@ export default class FcModalPicker extends Component {
         }
         return (
             <View style={[styles.overlayStyle, this.props.overlayStyle]}>
-                <View style={[styles.optionContainer,{height:height,marginTop:marginTop}]}>
-                    <ScrollView showsVerticalScrollIndicator={showsVerticalScrollIndicator} keyboardShouldPersistTaps={'always'}>
-                        <View style={{paddingHorizontal:10}}>
-                            {options}
-                        </View>
-                    </ScrollView>
+              {
+                this.props.addItemFunc!=undefined&&
+                <View style={styles.addItemButton}>
+                  <TouchableOpacity onPress={()=>{
+                    this.props.onRequestClose()
+                    this.props.addItemFunc()}}>
+                    <Icon name={ 'md-add' } size={26} style={{height:26}} color={'white'} />
+                  </TouchableOpacity>
                 </View>
-                <View style={styles.cancelContainer}>
-                    <TouchableOpacity onPress={this.props.onRequestClose}>
-                        <View style={[styles.cancelStyle, this.props.cancelStyle]}>
-                            <Text style={[styles.cancelTextStyle,this.props.cancelTextStyle]}>{this.props.cancelText}</Text>
-                        </View>
-                    </TouchableOpacity>
-                </View>
+              }
+              <View style={[styles.optionContainer,{height:height,marginTop:marginTop}]}>
+                  <ScrollView showsVerticalScrollIndicator={showsVerticalScrollIndicator} keyboardShouldPersistTaps={'always'}>
+                      <View style={{paddingHorizontal:10}}>
+                          {options}
+                      </View>
+                  </ScrollView>
+              </View>
+              <View style={styles.cancelContainer}>
+                  <TouchableOpacity onPress={this.props.onRequestClose}>
+                      <View style={[styles.cancelStyle, this.props.cancelStyle]}>
+                          <Text style={[styles.cancelTextStyle,this.props.cancelTextStyle]}>{this.props.cancelText}</Text>
+                      </View>
+                  </TouchableOpacity>
+              </View>
 
             </View>);
     }

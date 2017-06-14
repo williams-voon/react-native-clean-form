@@ -17,7 +17,7 @@ const createInputs = inputCreator => {
   )
   const Input = inputCreator('Input', renderInput, InputRenderer.PropTypes, InputRenderer.defaultProps)
 
-  const renderSelect = ({ input: { onChange, value }, labelKey, valueKey, options, placeholder,customModalPicker,multiSelect }) => (
+  const renderSelect = ({ input: { onChange, value }, labelKey, valueKey, options, placeholder,customModalPicker,multiSelect,addItemFunc }) => (
     <SelectRenderer
       labelKey={labelKey}
       options={options}
@@ -27,6 +27,7 @@ const createInputs = inputCreator => {
       valueKey={valueKey}
       customModalPicker={customModalPicker}
       multiSelect={multiSelect}
+      addItemFunc={addItemFunc}
     />
   )
   const Select = inputCreator('Select', renderSelect, SelectRenderer.PropTypes, SelectRenderer.defaultProps)

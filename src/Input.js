@@ -57,6 +57,7 @@ const StyledInput = styled.TextInput`
   color: ${props => props.theme.Input.color};
   font-size: ${props => props.theme.BaseInput.fontSize};
   line-height: ${props => props.theme.BaseInput.lineHeight};
+  ${props => props.multiline ? '' : 'height: 35; ' }
   text-align-vertical: ${props => determineTextOrientation(props)};
 `
 

@@ -130,6 +130,19 @@ export default StyleSheet.create({
     sectionTextStyle: {
         textAlign: 'center',
         fontSize: FONT_SIZE
+    },
+    addItemButton: {
+      position: 'absolute',
+      right: 15,
+      top: 15,
+      height:34,
+      width:34,
+      borderRadius:17,
+      backgroundColor:'transparent',
+      borderColor:'white',
+      borderWidth:2,
+      alignItems:'center',
+      justifyContent:'center',
     }
 });
 
