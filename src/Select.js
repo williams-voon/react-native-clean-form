@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   View,
   Platform,
+  StyleSheet,
 } from 'react-native'
 import styled from 'styled-components/native'
 import { default as BaseIcon } from 'react-native-vector-icons/Ionicons';
@@ -152,10 +153,13 @@ class Select extends Component {
             }
           }
           return (
-            <View key={i} style={{padding:4,borderWidth:1,marginRight:5,marginTop:1,
-               marginBottom:4 ,borderRadius: 5, borderColor:borderColor, backgroundColor: backgroundColor}}>
-              <Text style={{color:fontColor,backgroundColor:'transparent'
-               }}>{item.label}
+            <View key={i} style={[styles.displayBoxView,{
+            borderColor:borderColor,
+            backgroundColor: backgroundColor}]}>
+              <Text style={{
+                color:fontColor,
+                backgroundColor:'transparent'
+                }}>{item.label}
               </Text>
             </View>
           );
@@ -183,7 +187,7 @@ class Select extends Component {
            <LabelIconWrapper inlineLabel={inlineLabel}>
              {
                multiSelect?(
-                 <View style={{flexDirection:'row', flexWrap: 'wrap', flex:1}}>
+                 <View style={styles.multiSelectDisplayBox}>
                    {label}
                  </View>
                ):(<SelectLabel inlineLabel={inlineLabel}>{ label }</SelectLabel>)
@@ -244,6 +248,21 @@ class Select extends Component {
   }
 }
 
+const styles = StyleSheet.create({
+  multiSelectDisplayBox: {
+    flexDirection:'row',
+     flexWrap: 'wrap',
+     flex:1
+  },
+  displayBoxView:{
+    padding:4,
+    borderWidth:1,
+    marginRight:5,
+    marginTop:1,
+    marginBottom:4 ,
+    borderRadius: 5,
+  },
+});
 Select.PropTypes = {
   labelKey: React.PropTypes.string,
   placeholder: React.PropTypes.string,
