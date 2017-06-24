@@ -64,7 +64,6 @@ SelectPlaceholder.defaultProps = {
 class Select extends Component {
   constructor(props) {
     super(props)
-
     this.state = {
       showSelector: false,
       value: props.value
@@ -117,7 +116,7 @@ class Select extends Component {
     }, {})
 
     let label = <SelectPlaceholder>{ placeholder }</SelectPlaceholder>
-    if (value) {
+    if (value!=undefined&&value!='') {
       if(multiSelect){
         /*
         label=value.split(",").reduce((carry, option) => {
