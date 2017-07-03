@@ -12,8 +12,8 @@ import {
 } from '../../index'
 
 const createInputs = inputCreator => {
-  const renderInput = ({ input: { onChange, ...restInput }, placeholder}) => (
-    <InputRenderer onChangeText={onChange} placeholder={placeholder} {...restInput} />
+  const renderInput = ({ input: { onChange, ...restInput }, placeholder,onBarCodeScannerClick}) => (
+    <InputRenderer onChangeText={onChange} placeholder={placeholder} onBarCodeScannerClick={onBarCodeScannerClick} {...restInput} />
   )
   const Input = inputCreator('Input', renderInput, InputRenderer.PropTypes, InputRenderer.defaultProps)
 

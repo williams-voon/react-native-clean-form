@@ -1,7 +1,8 @@
 import React from 'react'
-import {TextInput, View,Platform} from 'react-native'
+import {TextInput, View,Platform,TouchableOpacity,StyleSheet} from 'react-native'
 import styled from 'styled-components/native'
 import defaultTheme from './Theme'
+import Icon from 'react-native-vector-icons/Ionicons';
 
 /**
  * Calculates the flex value based on the inlineLabel and numberOfLines
@@ -53,7 +54,7 @@ InputWrapper.defaultProps = {
 
 // Subtract the border of the form group to have a full height input
 const StyledInput = styled.TextInput`
-  flex: ${props => props.inlineLabel ? .5 : 1};
+  flex: 1;
   color: ${props => props.theme.Input.color};
   font-size: ${props => props.theme.BaseInput.fontSize};
   line-height: ${props => props.theme.BaseInput.lineHeight};
@@ -90,35 +91,51 @@ class Input extends React.Component {
     //console.log('onEndEditing',evt.nativeEvent.text);
     this.props.onChangeText( evt.nativeEvent.text )
   }
+  onBarCodeRead(data){
+    if(data!=''){
+      this.setState({ text: data })
+      this.props.onChangeText( data )
+    }
+  }
   render() {
+    let {onBarCodeScannerClick} = this.props
     return (
       <InputWrapper
         inlineLabel={this.props.inlineLabel}
         multiline={this.props.multiline}
         numberOfLines={this.props.numberOfLines}>
-        {
-          Platform.OS === 'android'?(
-          <StyledInput
-            inlineLabel={this.props.inlineLabel}
-            placeholderTextColor={this.props.theme.BaseInput.placeholderColor}
-            underlineColorAndroid='transparent'
-            {...this.props}
-          />
 
-          ):(
-          <StyledInput
-            inlineLabel={this.props.inlineLabel}
-            placeholderTextColor={this.props.theme.BaseInput.placeholderColor}
-            underlineColorAndroid='transparent'
-            {...this.props}
-            value={this.state.text}
-            onChangeText={this.onChangeText.bind(this)}
-            onChange={this.onChange.bind(this)}
-            onEndEditing={this.onEndEditing.bind(this)  }
-          />
+          <View style={styles.container}>
+            {
+              Platform.OS === 'android'?(
+                <StyledInput
+                  inlineLabel={this.props.inlineLabel}
+                  placeholderTextColor={this.props.theme.BaseInput.placeholderColor}
+                  underlineColorAndroid='transparent'
+                  {...this.props}
+                />
+              ):(
+                <StyledInput
+                  inlineLabel={this.props.inlineLabel}
+                  placeholderTextColor={this.props.theme.BaseInput.placeholderColor}
+                  underlineColorAndroid='transparent'
+                  {...this.props}
+                  value={this.state.text}
+                  onChangeText={this.onChangeText.bind(this)}
+                  onChange={this.onChange.bind(this)}
+                  onEndEditing={this.onEndEditing.bind(this)  }
+                />
 
-          )
-        }
+              )
+            }
+            {
+              onBarCodeScannerClick&&
+              <TouchableOpacity
+               onPress={()=>{onBarCodeScannerClick(this.onBarCodeRead.bind(this))}} >
+                 <Icon name={ 'ios-qr-scanner' } size={25} color={'blue'} />
+              </TouchableOpacity>
+            }
+          </View>
       </InputWrapper>
     )
   }
@@ -134,5 +151,7 @@ Input.defaultProps = {
   inlineLabel: true,
   theme: defaultTheme
 }
-
+const styles =StyleSheet.create({
+    container:{flexDirection:'row', flex:0.5}
+  })
 export default Input
