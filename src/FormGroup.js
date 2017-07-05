@@ -34,7 +34,10 @@ const FormGroupWrapper = styled.View`
   flex-direction: ${props => props.inlineLabel ? 'row' : 'column' };
   justify-content: flex-start;
   marginBottom: ${props => props.theme.FormGroup.marginBottom};
-  padding: ${props => props.theme.FormGroup.padding};
+  paddingTop : ${props => props.theme.Fieldset.paddingTop };
+  paddingRight : ${props => props.theme.Fieldset.paddingRight };
+  paddingBottom : ${props => props.theme.Fieldset.paddingBottom };
+  paddingLeft : ${props => props.theme.Fieldset.paddingLeft };
 `
 
 //height: ${props => calculateHeight(props)};
