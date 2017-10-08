@@ -23,13 +23,22 @@ ErrorMessage.defaultProps = {
 }
 
 const render = renderComponent => props => {
-  const { border, input : { onChange, ...restInput }, label, inlineLabel, showTips, tips, theme, meta: { touched, error } } = props
+  const { border, input : { onChange, ...restInput }, label, spaceBetweenFlag, inlineLabel, showTips, tips, theme, meta: { touched, error } } = props
 
   return (
     <View>
       { showTips && tips && <TipsMessage theme={theme?theme:defaultTheme}>{ tips }</TipsMessage> }
       <FormGroup border={border} inlineLabel={inlineLabel} theme={theme} error={touched && !!error} {...props} >
-        <Label theme={theme}>{ label }</Label>
+        {
+          spaceBetweenFlag?
+          (
+             <View style={{flex:1}}>
+              <Label theme={theme}>{ label }</Label>
+            </View>
+          ):(
+            <Label theme={theme}>{ label }</Label>
+          )
+        }
         { renderComponent(props) }
       </FormGroup>
       { touched && error && <ErrorMessage theme={theme}>{ error }</ErrorMessage> }
