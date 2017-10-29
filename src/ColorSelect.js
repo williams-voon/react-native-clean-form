@@ -12,6 +12,8 @@ import { default as BaseIcon } from 'react-native-vector-icons/Ionicons';
 import { ColorPicker,fromHsv } from 'react-native-color-picker'
 import defaultTheme from './Theme'
 
+import PropTypes from 'prop-types';
+
 // TODO: FIXME
 const HaveNoIdeaWhyThisIsNeeded=3
 
@@ -163,18 +165,18 @@ class Select extends Component {
 }
 
 Select.PropTypes = {
-  labelKey: React.PropTypes.string,
-  placeholder: React.PropTypes.string,
-  onValueChange: React.PropTypes.func.isRequired,
-  options: React.PropTypes.array.isRequired,
-  valueKey: React.PropTypes.string,
-  value: React.PropTypes.oneOf([
-    React.PropTypes.string,
-    React.PropTypes.number,
-    React.PropTypes.array
+  labelKey: PropTypes.string,
+  placeholder: PropTypes.string,
+  onValueChange: PropTypes.func.isRequired,
+  options: PropTypes.array.isRequired,
+  valueKey: PropTypes.string,
+  value: PropTypes.oneOf([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.array
   ]),
-  customModalPicker:React.PropTypes.node,
-  multiSelect:React.PropTypes.bool
+  customModalPicker:PropTypes.node,
+  multiSelect:PropTypes.bool
 }
 
 Select.defaultProps = {

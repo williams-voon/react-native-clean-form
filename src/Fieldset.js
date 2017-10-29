@@ -3,6 +3,8 @@ import { Text, View } from 'react-native'
 import styled from 'styled-components/native'
 import defaultTheme from './Theme'
 
+import PropTypes from 'prop-types';
+
 const FieldsetLabelText = styled.Text`
   color: ${props => props.theme.Fieldset.labelColor };
   fontSize: ${props => props.theme.Fieldset.labelSize };
@@ -48,8 +50,8 @@ const Fieldset = props => {
 }
 
 Fieldset.PropTypes = {
-  last: React.PropTypes.bool,
-  label: React.PropTypes.string
+  last: PropTypes.bool,
+  label: PropTypes.string
 }
 
 Fieldset.defaultProps = {

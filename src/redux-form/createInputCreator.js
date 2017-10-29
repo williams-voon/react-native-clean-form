@@ -3,6 +3,7 @@ import { View } from 'react-native'
 import { FormGroup, Label } from '../../index'
 import styled from 'styled-components/native'
 import defaultTheme from '../Theme'
+import ReactPropTypes from 'prop-types';
 
 const ErrorMessage = styled.Text`
   color: ${props => props.theme.ErrorMessage.color};
@@ -59,10 +60,10 @@ const createInputCreator = ReduxFormFieldComponent => (name, renderFunction, Pro
 
   FieldWrapper.displayName = 'FieldWrapper'
   FieldWrapper.PropTypes = Object.assign({
-    border: React.PropTypes.bool,
-    inlineLabel: React.PropTypes.bool,
-    label: React.PropTypes.string.isRequired,
-    name: React.PropTypes.string.isRequired
+    border: ReactPropTypes.bool,
+    inlineLabel: ReactPropTypes.bool,
+    label: ReactPropTypes.string.isRequired,
+    name: ReactPropTypes.string.isRequired
   }, PropTypes)
   FieldWrapper.defaultProps = Object.assign({
     border: FormGroup.defaultProps.border,

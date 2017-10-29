@@ -1,7 +1,7 @@
-'use strict';
 
+import PropTypes from 'prop-types';
 import React,{
-    PropTypes,Component
+    Component
 } from 'react';
 
 import {
@@ -23,7 +23,7 @@ import styles,{OPTION_CONTAINER_HEIGHT, TOP} from './FcSelectStyle';
 const propTypes = {
     data: PropTypes.array,
     onChange: PropTypes.func,
-    initValue: React.PropTypes.string,
+    initValue: PropTypes.string,
     style: ViewPropTypes.style,
     selectStyle: ViewPropTypes.style,
     optionStyle: ViewPropTypes.style,

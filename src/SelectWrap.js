@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import  React,{ Component } from 'react'
 import {
   Modal,
   Picker,
@@ -10,6 +10,8 @@ import {
 import styled from 'styled-components/native'
 import { default as BaseIcon } from 'react-native-vector-icons/Ionicons';
 import defaultTheme from './Theme'
+
+import PropTypes from 'prop-types';
 
 // TODO: FIXME
 const HaveNoIdeaWhyThisIsNeeded=3
@@ -95,7 +97,7 @@ class Select extends Component {
       onSelectAction,
       ...rest
     } = this.props
-    
+
     let label = <SelectPlaceholder>{ placeholder }</SelectPlaceholder>
     if (this.state.valueDesc!=undefined&&this.state.valueDesc!=''){
       label=this.state.valueDesc
@@ -114,18 +116,18 @@ class Select extends Component {
 }
 
 Select.PropTypes = {
-  labelKey: React.PropTypes.string,
-  placeholder: React.PropTypes.string,
-  onValueChange: React.PropTypes.func.isRequired,
-  options: React.PropTypes.array.isRequired,
-  valueKey: React.PropTypes.string,
-  value: React.PropTypes.oneOf([
-    React.PropTypes.string,
-    React.PropTypes.number,
-    React.PropTypes.array
+  labelKey: PropTypes.string,
+  placeholder: PropTypes.string,
+  onValueChange: PropTypes.func.isRequired,
+  options: PropTypes.array.isRequired,
+  valueKey: PropTypes.string,
+  value: PropTypes.oneOf([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.array
   ]),
-  customModalPicker:React.PropTypes.node,
-  multiSelect:React.PropTypes.bool
+  customModalPicker:PropTypes.node,
+  multiSelect:PropTypes.bool
 }
 
 Select.defaultProps = {
