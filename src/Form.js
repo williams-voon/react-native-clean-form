@@ -46,6 +46,7 @@ class Form extends Component {
         <View style={styles.container} onLayout={this.onLayout}>
           <ScrollView contentContainerStyle={{ minHeight: this.state.height }}
             ref='scrollView'
+            keyboardShouldPersistTaps={"handled"}
             onContentSizeChange={(contentWidth, contentHeight)=>{
             //  this.refs.scrollView.scrollTo({x:0, y:0,animated:false});
               //this.refs.scrollView.scrollToPosition(0,0,false)
