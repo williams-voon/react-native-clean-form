@@ -29,6 +29,7 @@ class Form extends Component {
         <View style={styles.container} onLayout={this.onLayout}>
           <KeyboardAwareScrollView contentContainerStyle={{ minHeight: this.state.height }}
             ref='scrollView'
+            keyboardShouldPersistTaps={"handled"}
             onContentSizeChange={(contentWidth, contentHeight)=>{
               if(this.scrollToTopDone==false){
                 this.scrollToTopDone=true;
