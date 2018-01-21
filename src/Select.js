@@ -141,7 +141,7 @@ class Select extends Component {
         label = items.map((item,i)=>{
           let fontColor='black'
           let backgroundColor='white'
-          let borderColor:'lightgrey'
+          let borderColor='lightgrey'
           if(item.rgbColor){
             backgroundColor=item.rgbColor
             borderColor='white'
