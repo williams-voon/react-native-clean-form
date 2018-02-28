@@ -44,7 +44,7 @@ const Label = props => {
   )
 }
 
-Label.PropTypes = {
+Label.propTypes = {
   children: PropTypes.string.isRequired
 }
 

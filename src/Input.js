@@ -142,7 +142,7 @@ class Input extends React.Component {
   }
 }
 
-Input.PropTypes = {
+Input.propTypes = {
   ...TextInput.propTypes,
   inlineLabel: PropTypes.bool.isRequired
 }

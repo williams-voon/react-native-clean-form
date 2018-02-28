@@ -15,7 +15,7 @@ const createInputs = inputCreator => {
   const renderInput = ({ input: { onChange, ...restInput }, placeholder,onBarCodeScannerClick}) => (
     <InputRenderer onChangeText={onChange} placeholder={placeholder} onBarCodeScannerClick={onBarCodeScannerClick} {...restInput} />
   )
-  const Input = inputCreator('Input', renderInput, InputRenderer.PropTypes, InputRenderer.defaultProps)
+  const Input = inputCreator('Input', renderInput, InputRenderer.propTypes, InputRenderer.defaultProps)
 
   const renderSelect = ({ input: { onChange, value }, labelKey, valueKey, options, placeholder,customModalPicker,multiSelect,addItemFunc }) => (
     <SelectRenderer
@@ -30,7 +30,7 @@ const createInputs = inputCreator => {
       addItemFunc={addItemFunc}
     />
   )
-  const Select = inputCreator('Select', renderSelect, SelectRenderer.PropTypes, SelectRenderer.defaultProps)
+  const Select = inputCreator('Select', renderSelect, SelectRenderer.propTypes, SelectRenderer.defaultProps)
 
   const renderSwitch = ({ input: { onChange, value }}) => {
     // redux-form default value is '', however Switch must take a boolean value
@@ -40,7 +40,7 @@ const createInputs = inputCreator => {
 
     return <SwitchRenderer onValueChange={onChange} value={value} />
   }
-  const Switch = inputCreator('Switch', renderSwitch, SwitchRenderer.PropTypes, SwitchRenderer.defaultProps)
+  const Switch = inputCreator('Switch', renderSwitch, SwitchRenderer.propTypes, SwitchRenderer.defaultProps)
 
   const renderColorSelect = ({ input: { onChange, value }, valueKey, placeholder }) => (
       <ColorSelectRenderer
@@ -49,7 +49,7 @@ const createInputs = inputCreator => {
         value={value}
       />
     )
-  const ColorSelect = inputCreator('ColorSelect', renderColorSelect, ColorSelectRenderer.PropTypes, ColorSelectRenderer.defaultProps)
+  const ColorSelect = inputCreator('ColorSelect', renderColorSelect, ColorSelectRenderer.propTypes, ColorSelectRenderer.defaultProps)
 
   const renderSelectWrap = ({ input: { onChange, value }, valueKey, placeholder,onSelectAction,valueDesc }) => (
       <SelectWrapRenderer
@@ -60,7 +60,7 @@ const createInputs = inputCreator => {
         value={value}
       />
     )
-  const SelectWrap = inputCreator('SelectWrap', renderSelectWrap, SelectWrapRenderer.PropTypes, SelectWrapRenderer.defaultProps)
+  const SelectWrap = inputCreator('SelectWrap', renderSelectWrap, SelectWrapRenderer.propTypes, SelectWrapRenderer.defaultProps)
 
 
 

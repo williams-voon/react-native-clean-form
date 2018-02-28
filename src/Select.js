@@ -264,7 +264,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
 });
-Select.PropTypes = {
+Select.propTypes = {
   labelKey: PropTypes.string,
   placeholder: PropTypes.string,
   onValueChange: PropTypes.func.isRequired,
