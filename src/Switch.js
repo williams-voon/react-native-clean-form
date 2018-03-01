@@ -6,9 +6,9 @@ import defaultTheme from './Theme'
 const Switch = styled(BaseSwitch)`
 `
 
-Switch.propTypes = BaseSwitch.propTypes
+Switch.ThePropTypes = BaseSwitch.propTypes
 
-Switch.ThePropTypes = Object.assign({}, BaseSwitch.defaultProps, {
+Switch.defaultProps = Object.assign({}, BaseSwitch.defaultProps, {
   theme: defaultTheme,
   componentName: 'Switch',
 })
