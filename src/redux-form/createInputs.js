@@ -30,7 +30,7 @@ const createInputs = inputCreator => {
       addItemFunc={addItemFunc}
     />
   )
-  const Select = inputCreator('Select', renderSelect, SelectRenderer.propTypes, SelectRenderer.defaultProps)
+  const Select = inputCreator('Select', renderSelect, SelectRenderer.ThePropTypes, SelectRenderer.defaultProps)
 
   const renderSwitch = ({ input: { onChange, value }}) => {
     // redux-form default value is '', however Switch must take a boolean value
@@ -40,7 +40,7 @@ const createInputs = inputCreator => {
 
     return <SwitchRenderer onValueChange={onChange} value={value} />
   }
-  const Switch = inputCreator('Switch', renderSwitch, SwitchRenderer.propTypes, SwitchRenderer.defaultProps)
+  const Switch = inputCreator('Switch', renderSwitch, SwitchRenderer.ThePropTypes, SwitchRenderer.defaultProps)
 
   const renderColorSelect = ({ input: { onChange, value }, valueKey, placeholder }) => (
       <ColorSelectRenderer
@@ -49,7 +49,7 @@ const createInputs = inputCreator => {
         value={value}
       />
     )
-  const ColorSelect = inputCreator('ColorSelect', renderColorSelect, ColorSelectRenderer.propTypes, ColorSelectRenderer.defaultProps)
+  const ColorSelect = inputCreator('ColorSelect', renderColorSelect, ColorSelectRenderer.ThePropTypes, ColorSelectRenderer.defaultProps)
 
   const renderSelectWrap = ({ input: { onChange, value }, valueKey, placeholder,onSelectAction,valueDesc }) => (
       <SelectWrapRenderer
@@ -60,7 +60,7 @@ const createInputs = inputCreator => {
         value={value}
       />
     )
-  const SelectWrap = inputCreator('SelectWrap', renderSelectWrap, SelectWrapRenderer.propTypes, SelectWrapRenderer.defaultProps)
+  const SelectWrap = inputCreator('SelectWrap', renderSelectWrap, SelectWrapRenderer.ThePropTypes, SelectWrapRenderer.defaultProps)
 
 
 

@@ -57,7 +57,7 @@ Fieldset.propTypes = {
 Fieldset.defaultProps = {
   componentName: 'Fieldset',
   last: false,
-  label: false,
+  label: undefined,
   theme: defaultTheme
 }
 

@@ -112,10 +112,10 @@ class Select extends Component {
       labelKey,
       onValueChange,
       placeholder,
-      valueKey,
+    //  valueKey,
       theme,
-      customModalPicker,
-      multiSelect,
+      //,
+    //  multiSelect,
       ...rest
     } = this.props
     const { showSelector, value } = this.state
@@ -164,19 +164,20 @@ class Select extends Component {
   }
 }
 
-Select.propTypes = {
+Select.ThePropTypes = {
   labelKey: PropTypes.string,
   placeholder: PropTypes.string,
   onValueChange: PropTypes.func.isRequired,
-  options: PropTypes.array.isRequired,
-  valueKey: PropTypes.string,
-  value: PropTypes.oneOf([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.array
-  ]),
-  customModalPicker:PropTypes.node,
-  multiSelect:PropTypes.bool
+//  options: PropTypes.array.isRequired,
+  //valueKey: PropTypes.string,
+  //value: PropTypes.oneOf([
+  //  PropTypes.string,
+  //  PropTypes.number,
+  //  PropTypes.array
+  //]),
+  //value:PropTypes.array,
+  //customModalPicker:PropTypes.node,
+ // multiSelect:PropTypes.bool
 }
 
 Select.defaultProps = {
@@ -184,9 +185,9 @@ Select.defaultProps = {
   onValueChange: () => {},
   placeholder: '',
   labelKey: 'label',
-  valueKey: 'value',
-  value: '',
-  multiSelect: false
+ // valueKey: 'value',
+  //value: '',
+//  multiSelect: false
 }
 
 

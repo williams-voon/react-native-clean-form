@@ -264,18 +264,18 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
 });
-Select.propTypes = {
+Select.ThePropTypes = {
   labelKey: PropTypes.string,
   placeholder: PropTypes.string,
   onValueChange: PropTypes.func.isRequired,
-  options: PropTypes.array.isRequired,
+  options: PropTypes.array,
   valueKey: PropTypes.string,
   value: PropTypes.oneOf([
     PropTypes.string,
     PropTypes.number,
     PropTypes.array
   ]),
-  customModalPicker:PropTypes.node,
+  customModalPicker:PropTypes.func,
   multiSelect:PropTypes.bool
 }
 
@@ -285,7 +285,7 @@ Select.defaultProps = {
   placeholder: '',
   labelKey: 'label',
   valueKey: 'value',
-  value: '',
+//  value: '',
   multiSelect: false
 }
 

@@ -115,18 +115,17 @@ class Select extends Component {
   }
 }
 
-Select.propTypes = {
+Select.ThePropTypes = {
   labelKey: PropTypes.string,
   placeholder: PropTypes.string,
   onValueChange: PropTypes.func.isRequired,
-  options: PropTypes.array.isRequired,
+  options: PropTypes.array,
   valueKey: PropTypes.string,
   value: PropTypes.oneOf([
     PropTypes.string,
-    PropTypes.number,
-    PropTypes.array
+    PropTypes.number
   ]),
-  customModalPicker:PropTypes.node,
+//  customModalPicker:PropTypes.element,
   multiSelect:PropTypes.bool
 }
 
@@ -136,7 +135,7 @@ Select.defaultProps = {
   placeholder: '',
   labelKey: 'label',
   valueKey: 'value',
-  value: '',
+//  value: '',
   multiSelect: false
 }
 

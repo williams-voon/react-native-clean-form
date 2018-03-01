@@ -59,12 +59,13 @@ const createInputCreator = ReduxFormFieldComponent => (name, renderFunction, Pro
   }
 
   FieldWrapper.displayName = 'FieldWrapper'
-  FieldWrapper.propTypes = {
+  FieldWrapper.propTypes = Object.assign({
     border: ReactPropTypes.bool,
     inlineLabel: ReactPropTypes.bool,
     label: ReactPropTypes.string.isRequired,
-    name: ReactPropTypes.string.isRequired
-  }
+    name: ReactPropTypes.string.isRequired,
+  }, PropTypes)
+
   FieldWrapper.defaultProps = Object.assign({
     border: FormGroup.defaultProps.border,
     inlineLabel: FormGroup.defaultProps.inlineLabel
