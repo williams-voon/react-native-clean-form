@@ -180,13 +180,13 @@ export default class FcModalMultiPicker extends Component {
             <View style={[styles.overlayStyle, this.props.overlayStyle]} >
               {
                 this.props.addItemFunc!=undefined&&
-                <View style={styles.addItemButton}>
-                  <TouchableOpacity onPress={()=>{
+                  <TouchableOpacity style={styles.addItemButtonWrap} onPress={()=>{
                     this.props.onRequestClose()
                     this.props.addItemFunc()}}>
-                    <Icon name={ 'md-add' } size={26} style={{height:26}} color={'white'} />
+                    <View style={styles.addItemButton}>
+                      <Icon name={ 'md-add' } size={26} style={{height:26}} color={'white'} />
+                    </View>
                   </TouchableOpacity>
-                </View>
               }
               <View style={[styles.optionContainer,{height:height,marginTop:marginTop}]}>
                   <ScrollView showsVerticalScrollIndicator={showsVerticalScrollIndicator}>
