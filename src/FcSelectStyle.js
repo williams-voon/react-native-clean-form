@@ -132,9 +132,6 @@ export default StyleSheet.create({
         fontSize: FONT_SIZE
     },
     addItemButton: {
-      position: 'absolute',
-      right: 15,
-      top: 15,
       height:34,
       width:34,
       borderRadius:17,
@@ -143,6 +140,12 @@ export default StyleSheet.create({
       borderWidth:2,
       alignItems:'center',
       justifyContent:'center',
+    },
+    addItemButtonWrap:{
+        position: 'absolute',
+        right: 15,
+        top: 15,
+        padding:10
     }
 });
 
