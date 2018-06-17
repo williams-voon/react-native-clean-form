@@ -59,7 +59,8 @@ const StyledInput = styled.TextInput`
   color: ${props => props.theme.Input.color};
   font-size: ${props => props.theme.BaseInput.fontSize};
   line-height: ${props => props.theme.BaseInput.lineHeight};
-  padding: 0;
+  padding-top: 4;
+  padding-bottom: 4;
   text-align-vertical: ${props => determineTextOrientation(props)};
 `
 
@@ -153,6 +154,6 @@ Input.defaultProps = {
   theme: defaultTheme
 }
 const styles =StyleSheet.create({
-    container:{flexDirection:'row', flex:0.5}
+    container:{flexDirection:'row', flex:0.5, alignItems:'center'}
   })
 export default Input

@@ -51,7 +51,8 @@ const Fieldset = props => {
 
 Fieldset.propTypes = {
   last: PropTypes.bool,
-  label: PropTypes.string
+  label: PropTypes.string,
+  componentName: PropTypes.string,
 }
 
 Fieldset.defaultProps = {

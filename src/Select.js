@@ -7,6 +7,7 @@ import {
   View,
   Platform,
   StyleSheet,
+  Keyboard
 } from 'react-native'
 import styled from 'styled-components/native'
 import { default as BaseIcon } from 'react-native-vector-icons/Ionicons';
@@ -166,7 +167,11 @@ class Select extends Component {
           );
         })
       }else{
-        label = labelsByValue[value].label
+        if(labelsByValue[value]){
+          label = labelsByValue[value].label
+        }else{
+          label= 'NoFound:'+value
+        }
       }
     }
     if (customModalPicker){
@@ -184,7 +189,13 @@ class Select extends Component {
            addItemFunc={addItemFunc!=undefined?()=>{addItemFunc(this.toggleSelector)}: null }
          />
 
-         <TouchableOpacity onPress={this.toggleSelector}>
+         <TouchableOpacity style={styles.button} onPress={()=>{
+            Keyboard.dismiss()  //2018-6-17 
+            setTimeout(()=>{
+              this.toggleSelector()
+            },5)
+            }
+          }>
            <LabelIconWrapper inlineLabel={inlineLabel}>
              {
                multiSelect?(
@@ -219,7 +230,7 @@ class Select extends Component {
             </Picker>
           </Modal>
 
-          <TouchableOpacity onPress={this.toggleSelector}>
+          <TouchableOpacity style={styles.button} onPress={this.toggleSelector}>
             <LabelIconWrapper inlineLabel={inlineLabel}>
               <SelectLabel inlineLabel={inlineLabel}>{ label }</SelectLabel>
               <Icon name="ios-arrow-down" />
@@ -263,6 +274,10 @@ const styles = StyleSheet.create({
     marginBottom:4 ,
     borderRadius: 5,
   },
+  button:{
+    paddingTop:4,
+    paddingBottom:4
+  }
 });
 Select.ThePropTypes = {
   labelKey: PropTypes.string,

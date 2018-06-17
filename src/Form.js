@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {ScrollView,  View,StyleSheet,Platform } from 'react-native'
 import styled from 'styled-components/native'
-import { KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
+//import { KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 
 // Flex: 1 will force the form to take up remaining height of the view
 class Form extends Component {
@@ -24,6 +24,7 @@ class Form extends Component {
 
   render() {
     const { children, ...rest } = this.props
+    /*
     if( Platform.OS === 'ios' ) {
       return (
         <View style={styles.container} onLayout={this.onLayout}>
@@ -41,7 +42,8 @@ class Form extends Component {
           </KeyboardAwareScrollView>
         </View>
       )
-    }else{
+    }else */
+    {
       return (
         <View style={styles.container} onLayout={this.onLayout}>
           <ScrollView contentContainerStyle={{ minHeight: this.state.height }}
