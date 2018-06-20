@@ -5,13 +5,20 @@ import {
   Text,
   TouchableOpacity,
   View,
-  StyleSheet
+  StyleSheet,
+  Dimensions, 
+  Platform 
 } from 'react-native'
 import styled from 'styled-components/native'
 import { default as BaseIcon } from 'react-native-vector-icons/Ionicons';
 import { ColorPicker,fromHsv } from 'react-native-color-picker'
 import defaultTheme from './Theme'
 
+const height = Dimensions.get('window').height
+const isIphoneX=(Platform.OS === 'ios' &&
+  !Platform.isPad &&
+  !Platform.isTVOS &&
+  height === 812)
 import PropTypes from 'prop-types';
 
 // TODO: FIXME
@@ -193,12 +200,14 @@ Select.defaultProps = {
 
 var styles = StyleSheet.create({
     button: {
+        paddingTop:10,
         paddingLeft:20,
-        paddingRight:20
+        paddingRight:20,
+        paddingBottom:10,
     },
     bar:{
       flexDirection:'row',justifyContent:'space-around',alignItems:'center' ,
-      marginTop:20,
+      marginTop: isIphoneX?20+24: 20,
     },
     valueField:{borderRadius:11,width:22,height:22},
     colorPickerDlg:{flex: 1, paddingBottom: 15, backgroundColor: '#212021'},
