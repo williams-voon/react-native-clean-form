@@ -33,7 +33,8 @@ const propTypes = {
     cancelStyle: ViewPropTypes.style,
     cancelTextStyle: Text.propTypes.style,
     overlayStyle: ViewPropTypes.style,
-    cancelText: PropTypes.string
+    cancelText: PropTypes.string,
+    deselectText: PropTypes.string
 };
 
 const defaultProps = {
@@ -49,7 +50,8 @@ const defaultProps = {
     cancelStyle: {},
     cancelTextStyle: {},
     overlayStyle: {},
-    cancelText: 'cancel'
+    cancelText: 'cancel',
+    deselectText: '全部不选'
 };
 
 export default class FcModalPicker extends Component {
@@ -137,10 +139,18 @@ export default class FcModalPicker extends Component {
                       </View>
                   </ScrollView>
               </View>
-              <View style={styles.cancelContainer}>
-                  <TouchableOpacity onPress={this.props.onRequestClose}>
-                      <View style={[styles.cancelStyle, this.props.cancelStyle]}>
+               <View style={styles.cancelComfirmContainer}>
+                  <TouchableOpacity style={styles.cancelConfirmButtonStyle} onPress={this.props.onRequestClose}>
+                      <View style={[styles.cancelButtonStyle, this.props.cancelButtonStyle]}>
                           <Text style={[styles.cancelTextStyle,this.props.cancelTextStyle]}>{this.props.cancelText}</Text>
+                      </View>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.cancelConfirmButtonStyle} onPress={()=>{
+                      this.props.onChange(null);
+                      this.props.onRequestClose();
+                  }}>
+                      <View style={[styles.confirmButtonStyle, this.props.confirmButtonStyle]}>
+                          <Text style={[styles.confirmTextStyle,this.props.confirmTextStyle]}>{this.props.deselectText}</Text>
                       </View>
                   </TouchableOpacity>
               </View>
