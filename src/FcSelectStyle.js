@@ -10,6 +10,10 @@ const FONT_SIZE = 16;
 const HIGHLIGHT_COLOR = 'rgba(0,118,255,0.9)';
 const OPTION_CONTAINER_HEIGHT = height-(Platform.OS === 'ios'?120:140); //400;
 const TOP=50;
+const isIphoneX=(Platform.OS === 'ios' &&
+  !Platform.isPad &&
+  !Platform.isTVOS &&
+  height === 812)
 
 export default StyleSheet.create({
 
@@ -143,9 +147,9 @@ export default StyleSheet.create({
     },
     addItemButtonWrap:{
         position: 'absolute',
-        right: 15,
-        top: 15,
-        padding:10
+        right: 8,
+        top: isIphoneX?32:20,
+        padding:15
     }
 });
 
