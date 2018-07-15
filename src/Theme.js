@@ -50,7 +50,7 @@ const Theme = {
   BaseInput: {
     placeholderColor: '#c9c9c9',
     fontSize: 12,
-    lineHeight: 12
+    lineHeight: 16  // 2018-7-14, change 12 to 16
   },
   Input: {
     color: '#313131',

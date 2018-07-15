@@ -54,13 +54,14 @@ InputWrapper.defaultProps = {
 }
 
 // Subtract the border of the form group to have a full height input
+ // 2018-7-14, change padding-top/padding-bottom 4 to 0
 const StyledInput = styled.TextInput`
   flex: 1;
   color: ${props => props.theme.Input.color};
   font-size: ${props => props.theme.BaseInput.fontSize};
   line-height: ${props => props.theme.BaseInput.lineHeight};
-  padding-top: 4;
-  padding-bottom: 4;
+  padding-top: 0;
+  padding-bottom: 0;
   text-align-vertical: ${props => determineTextOrientation(props)};
 `
 
