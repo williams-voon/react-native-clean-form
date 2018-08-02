@@ -1,10 +1,12 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {TextInput, View,Platform,TouchableOpacity,StyleSheet} from 'react-native'
 import styled from 'styled-components/native'
 import defaultTheme from './Theme'
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import PropTypes from 'prop-types';
+
+
 /**
  * Calculates the flex value based on the inlineLabel and numberOfLines
  * properties.
@@ -55,7 +57,7 @@ InputWrapper.defaultProps = {
 
 // Subtract the border of the form group to have a full height input
  // 2018-7-14, change padding-top/padding-bottom 4 to 0
-const StyledInput = styled.TextInput`
+const StyledInput2 = styled.TextInput`
   flex: 1;
   color: ${props => props.theme.Input.color};
   font-size: ${props => props.theme.BaseInput.fontSize};
@@ -64,10 +66,23 @@ const StyledInput = styled.TextInput`
   padding-bottom: 0;
   text-align-vertical: ${props => determineTextOrientation(props)};
 `
-
-StyledInput.defaultProps = {
+StyledInput2.defaultProps = {
   theme: defaultTheme
 }
+
+class StyledInput extends Component {
+
+  shouldComponentUpdate (nextProps){
+      let ret=Platform.OS !== 'ios'
+      || (this.props.value === nextProps.value && (nextProps.defaultValue == undefined || nextProps.defaultValue == '' ))
+      || (this.props.defaultValue === nextProps.defaultValue && (nextProps.value == undefined || nextProps.value == '' ));
+    //  console.log('ret',ret, 'this.props.value',this.props.value,'nextProps.value',nextProps.value,'nextProps.defaultValue',nextProps.defaultValue,'this.props.defaultValue',this.props.defaultValue)
+      return ret
+  }
+  render() {
+      return <StyledInput2 {...this.props} />;
+  }
+};
 
 class Input extends React.Component {
   constructor(props) {
@@ -85,10 +100,9 @@ class Input extends React.Component {
       setTimeout(() => {this.setState({ text: text })})
       //console.log(text);
   }
-  onChange(evt){
-    this.setState({ text: evt.nativeEvent.text })
-    //console.log('onChange',evt.nativeEvent.text);
-  }
+  //onChange(evt){
+  //  this.setState({ text: evt.nativeEvent.text })
+  //}
   onEndEditing(evt){
     this.setState({ text: evt.nativeEvent.text })
     //console.log('onEndEditing',evt.nativeEvent.text);
@@ -125,8 +139,9 @@ class Input extends React.Component {
                   {...this.props}
                   value={this.state.text}
                   onChangeText={this.onChangeText.bind(this)}
-                  onChange={this.onChange.bind(this)}
-                  onEndEditing={this.onEndEditing.bind(this)  }
+                  //onChange={this.onChange.bind(this)}
+                  onEndEditing={this.onEndEditing.bind(this)  
+                  }
                 />
 
               )
