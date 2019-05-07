@@ -6,21 +6,21 @@ import defaultTheme from '../Theme'
 import ReactPropTypes from 'prop-types';
 
 const ErrorMessage = styled.Text`
-  color: ${props => props.theme.ErrorMessage.color};
-  fontSize: ${props => props.theme.ErrorMessage.fontSize};
-  marginBottom: ${props => props.theme.ErrorMessage.marginBottom};
-  textAlign: ${props => props.theme.ErrorMessage.textAlign};
+  color: ${props => props.myTheme.ErrorMessage.color};
+  fontSize: ${props => props.myTheme.ErrorMessage.fontSize};
+  marginBottom: ${props => props.myTheme.ErrorMessage.marginBottom};
+  textAlign: ${props => props.myTheme.ErrorMessage.textAlign};
 `
 const TipsMessage = styled.Text`
-  color: ${props => props.theme.TipsMessage.color};
-  fontSize: ${props => props.theme.TipsMessage.fontSize};
-  marginTop: ${props => props.theme.TipsMessage.marginTop};
-  marginBottom: ${props => props.theme.ErrorMessage.marginBottom};
-  textAlign: ${props => props.theme.TipsMessage.textAlign};
+  color: ${props => props.myTheme.TipsMessage.color};
+  fontSize: ${props => props.myTheme.TipsMessage.fontSize};
+  marginTop: ${props => props.myTheme.TipsMessage.marginTop};
+  marginBottom: ${props => props.myTheme.ErrorMessage.marginBottom};
+  textAlign: ${props => props.myTheme.TipsMessage.textAlign};
 `
 
 ErrorMessage.defaultProps = {
-  theme: defaultTheme
+  myTheme: defaultTheme
 }
 
 const render = renderComponent => props => {
@@ -28,7 +28,7 @@ const render = renderComponent => props => {
 
   return (
     <View>
-      { showTips && tips && <TipsMessage theme={theme?theme:defaultTheme}>{ tips }</TipsMessage> }
+      { showTips && tips && <TipsMessage myTheme={theme?theme:defaultTheme}>{ tips }</TipsMessage> }
       <FormGroup border={border} inlineLabel={inlineLabel} theme={theme} error={touched && !!error} {...props} >
         {
           spaceBetweenFlag?
@@ -42,7 +42,7 @@ const render = renderComponent => props => {
         }
         { renderComponent(props) }
       </FormGroup>
-      { touched && error && <ErrorMessage theme={theme}>{ error }</ErrorMessage> }
+      { touched && error && <ErrorMessage myTheme={theme}>{ error }</ErrorMessage> }
     </View>
   )
 }

@@ -1,8 +1,8 @@
 import React from 'react'
 import { Text, View } from 'react-native'
-import {
-  Field
-} from 'redux-form/immutable'
+//import {
+//  Field
+//} from 'redux-form/immutable'
 import {
   Input as InputRenderer,
   Select as SelectRenderer,

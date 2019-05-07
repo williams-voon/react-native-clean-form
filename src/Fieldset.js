@@ -6,25 +6,25 @@ import defaultTheme from './Theme'
 import PropTypes from 'prop-types';
 
 const FieldsetLabelText = styled.Text`
-  color: ${props => props.theme.Fieldset.labelColor };
-  fontSize: ${props => props.theme.Fieldset.labelSize };
-  fontWeight: ${props => props.theme.Fieldset.labelWeight };
-  height: ${props => props.theme.Fieldset.labelHeight };
+  color: ${props => props.myTheme.Fieldset.labelColor };
+  fontSize: ${props => props.myTheme.Fieldset.labelSize };
+  fontWeight: ${props => props.myTheme.Fieldset.labelWeight };
+  height: ${props => props.myTheme.Fieldset.labelHeight };
 `
 
 FieldsetLabelText.defaultProps = {
-  theme: defaultTheme
+  myTheme: defaultTheme
 }
 
 const FieldsetLabel = props => <View><FieldsetLabelText>{ props.children }</FieldsetLabelText></View>
 
 const FieldsetWrapper = styled.View`
-  borderBottomColor: ${props => props.theme.Fieldset.borderBottomColor };
-  borderBottomWidth: ${props => props.last ? 0 : props.theme.Fieldset.borderBottomWidth };
-  paddingTop : ${props => props.theme.Fieldset.paddingTop };
-  paddingRight : ${props => props.theme.Fieldset.paddingRight };
-  paddingBottom : ${props => props.theme.Fieldset.paddingBottom };
-  paddingLeft : ${props => props.theme.Fieldset.paddingLeft };
+  borderBottomColor: ${props => props.myTheme.Fieldset.borderBottomColor };
+  borderBottomWidth: ${props => props.last ? 0 : props.myTheme.Fieldset.borderBottomWidth };
+  paddingTop : ${props => props.myTheme.Fieldset.paddingTop };
+  paddingRight : ${props => props.myTheme.Fieldset.paddingRight };
+  paddingBottom : ${props => props.myTheme.Fieldset.paddingBottom };
+  paddingLeft : ${props => props.myTheme.Fieldset.paddingLeft };
 `
 
 FieldsetWrapper.defaultProps = {
@@ -39,7 +39,7 @@ const Fieldset = props => {
   const { children, label, last, theme } = props
 
   return (
-    <FieldsetWrapper last={last} theme={theme}>
+    <FieldsetWrapper last={last} myTheme={theme}>
       { /* text-transform is for some reason not supported in react native https://github.com/facebook/react-native/issues/2088 */ }
       { label && <FieldsetLabel>{ label.toUpperCase() }</FieldsetLabel> }
       <FieldsetFormWrapper>

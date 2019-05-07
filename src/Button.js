@@ -20,12 +20,12 @@ const ButtonWrapper = styled.View`
 `
 
 const ButtonStyle = styled.View`
-  backgroundColor: ${props => props.theme.Button.backgroundColor};
-  height: ${props => props.theme.Button.height};
+  backgroundColor: ${props => props.myTheme.Button.backgroundColor};
+  height: ${props => props.myTheme.Button.height};
 `
 
 ButtonStyle.defaultProps = {
-  theme: defaultTheme
+  myTheme: defaultTheme
 }
 
 const ButtonTextWrapper = styled.View`
@@ -36,13 +36,13 @@ const ButtonTextWrapper = styled.View`
 `
 
 const ButtonText = styled.Text`
-  color: ${props => props.theme.Button.color};
-  font-size: ${props => props.theme.Button.fontSize};
-  font-weight: ${props => props.theme.Button.fontWeight};
+  color: ${props => props.myTheme.Button.color};
+  font-size: ${props => props.myTheme.Button.fontSize};
+  font-weight: ${props => props.myTheme.Button.fontWeight};
 `
 
 ButtonText.defaultProps = {
-  theme: defaultTheme,
+  myTheme: defaultTheme,
   componentName: 'Button'
 }
 
@@ -82,10 +82,10 @@ const Button = props => {
   return (
     <ButtonWrapper>
       <Touchable {...rest}>
-        <ButtonStyle theme={theme}>
+        <ButtonStyle myTheme={theme}>
           <ButtonTextWrapper>
             {iconPlacement === 'left' && IconWrapped}
-            <ButtonText theme={theme}>
+            <ButtonText myTheme={theme}>
               { children }
             </ButtonText>
             {iconPlacement === 'right' && IconWrapped}

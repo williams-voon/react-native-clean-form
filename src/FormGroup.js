@@ -29,23 +29,23 @@ const calculateHeight = (props) => {
 
 const FormGroupWrapper = styled.View`
   align-items: ${props => props.inlineLabel ? 'center' : 'stretch' };
-  border-color: ${props => props.error ? props.theme.FormGroup.errorBorderColor : props.theme.FormGroup.borderColor};
-  border-radius: ${props => props.theme.FormGroup.borderRadius};
-  border-style: ${props => props.theme.FormGroup.borderStyle};
-  border-width: ${props => props.border ? props.theme.FormGroup.borderWidth : 0};
+  border-color: ${props => props.error ? props.myTheme.FormGroup.errorBorderColor : props.myTheme.FormGroup.borderColor};
+  border-radius: ${props => props.myTheme.FormGroup.borderRadius};
+  border-style: ${props => props.myTheme.FormGroup.borderStyle};
+  border-width: ${props => props.border ? props.myTheme.FormGroup.borderWidth : 0};
   flex-direction: ${props => props.inlineLabel ? 'row' : 'column' };
   justify-content: flex-start;
-  marginBottom: ${props => props.theme.FormGroup.marginBottom};
-  paddingTop : ${props => props.theme.Fieldset.paddingTop };
-  paddingRight : ${props => props.theme.Fieldset.paddingRight };
-  paddingBottom : ${props => props.theme.Fieldset.paddingBottom };
-  paddingLeft : ${props => props.theme.Fieldset.paddingLeft };
+  marginBottom: ${props => props.myTheme.FormGroup.marginBottom};
+  paddingTop : ${props => props.myTheme.Fieldset.paddingTop };
+  paddingRight : ${props => props.myTheme.Fieldset.paddingRight };
+  paddingBottom : ${props => props.myTheme.Fieldset.paddingBottom };
+  paddingLeft : ${props => props.myTheme.Fieldset.paddingLeft };
 `
 
 //height: ${props => calculateHeight(props)};
 
 FormGroupWrapper.defaultProps = {
-  theme: defaultTheme,
+  myTheme: defaultTheme,
   componentName: 'FormGroupWrapper'
 }
 
@@ -65,7 +65,7 @@ const FormGroup = props => {
 
   return (
     <FormGroupWrapper border={border} error={error} inlineLabel={inlineLabel}
-      multiline={multiline} numberOfLines={numberOfLines} theme={theme}>
+      multiline={multiline} numberOfLines={numberOfLines} myTheme={theme}>
       { children }
     </FormGroupWrapper>
   )

@@ -17,32 +17,32 @@ import PropTypes from 'prop-types';
 const HaveNoIdeaWhyThisIsNeeded=3
 
 const SelectLabel = styled.Text`
-  font-size: ${props => props.theme.BaseInput.fontSize};
+  font-size: ${props => props.myTheme.BaseInput.fontSize};
   flex:1;
 `
 
 SelectLabel.defaultProps = {
-  theme: defaultTheme
+  myTheme: defaultTheme
 }
 
 const LabelIconWrapper = styled.View`
   justify-content: center;
   align-items: center;
   flex-direction:row;
-  height: ${props => props.inlineLabel ? props.theme.FormGroup.height - props.theme.FormGroup.borderWidth*2 : props.theme.FormGroup.height-HaveNoIdeaWhyThisIsNeeded};
+  height: ${props => props.inlineLabel ? props.myTheme.FormGroup.height - props.myTheme.FormGroup.borderWidth*2 : props.myTheme.FormGroup.height-HaveNoIdeaWhyThisIsNeeded};
 `
 
 LabelIconWrapper.defaultProps = {
-  theme: defaultTheme
+  myTheme: defaultTheme
 }
 
 const SelectWrapper = styled.View`
   flex: ${props => props.inlineLabel ? .5 : 1};
-  height: ${props => props.inlineLabel ? props.theme.FormGroup.height - props.theme.FormGroup.borderWidth*2 : props.theme.FormGroup.height-HaveNoIdeaWhyThisIsNeeded};
+  height: ${props => props.inlineLabel ? props.myTheme.FormGroup.height - props.myTheme.FormGroup.borderWidth*2 : props.myTheme.FormGroup.height-HaveNoIdeaWhyThisIsNeeded};
 `
 
 SelectWrapper.defaultProps = {
-  theme: defaultTheme
+  myTheme: defaultTheme
 }
 
 const Icon = styled(BaseIcon)`
@@ -51,11 +51,11 @@ const Icon = styled(BaseIcon)`
 `
 
 const SelectPlaceholder = styled.Text`
-  color: ${props => props.theme.BaseInput.placeholderColor};
+  color: ${props => props.myTheme.BaseInput.placeholderColor};
 `
 
 SelectPlaceholder.defaultProps = {
-  theme: defaultTheme
+  myTheme: defaultTheme
 }
 
 class Select extends Component {
@@ -103,7 +103,7 @@ class Select extends Component {
       label=this.state.valueDesc
     }
       return (
-        <SelectWrapper inlineLabel={inlineLabel} theme={theme}>
+        <SelectWrapper inlineLabel={inlineLabel} myTheme={theme}>
           <TouchableOpacity onPress={()=>{onSelectAction(this.setValueAndLabel.bind(this))}}>
             <LabelIconWrapper inlineLabel={inlineLabel}>
               <SelectLabel inlineLabel={inlineLabel}>{ label }</SelectLabel>

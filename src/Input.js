@@ -59,26 +59,27 @@ InputWrapper.defaultProps = {
  // 2018-7-14, change padding-top/padding-bottom 4 to 0
 const StyledInput2 = styled.TextInput`
   flex: 1;
-  color: ${props => props.theme.Input.color};
-  font-size: ${props => props.theme.BaseInput.fontSize};
-  line-height: ${props => props.theme.BaseInput.lineHeight};
+  color: ${props => props.myTheme.Input.color};
+  font-size: ${props => props.myTheme.BaseInput.fontSize};
+  line-height: ${props => props.myTheme.BaseInput.lineHeight};
   padding-top: 0;
   padding-bottom: 0;
   text-align-vertical: ${props => determineTextOrientation(props)};
 `
 StyledInput2.defaultProps = {
-  theme: defaultTheme
+  myTheme: defaultTheme
 }
 
 class StyledInput extends Component {
-
+/*
   shouldComponentUpdate (nextProps){
       let ret=Platform.OS !== 'ios'
       || (this.props.value === nextProps.value && (nextProps.defaultValue == undefined || nextProps.defaultValue == '' ))
       || (this.props.defaultValue === nextProps.defaultValue && (nextProps.value == undefined || nextProps.value == '' ));
-    //  console.log('ret',ret, 'this.props.value',this.props.value,'nextProps.value',nextProps.value,'nextProps.defaultValue',nextProps.defaultValue,'this.props.defaultValue',this.props.defaultValue)
+      console.log('ret',ret, 'this.props.value',this.props.value,'nextProps.value',nextProps.value,'nextProps.defaultValue',nextProps.defaultValue,'this.props.defaultValue',this.props.defaultValue)
       return ret
   }
+  */
   render() {
       return <StyledInput2 {...this.props} />;
   }
@@ -93,19 +94,21 @@ class Input extends React.Component {
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.value !== this.state.text) {
+ //     console.log('componentWillReceiveProps->onChangeText', text);
       this.onChangeText(nextProps.value)
     }
   }
   onChangeText(text) {
       setTimeout(() => {this.setState({ text: text })})
-      //console.log(text);
+ //     console.log('onChangeText', text);
   }
   //onChange(evt){
-  //  this.setState({ text: evt.nativeEvent.text })
+	//  console.log('onChange',evt.nativeEvent.text);
+	//this.setState({ text: evt.nativeEvent.text })
   //}
   onEndEditing(evt){
     this.setState({ text: evt.nativeEvent.text })
-    //console.log('onEndEditing',evt.nativeEvent.text);
+  //  console.log('onEndEditing',evt.nativeEvent.text);
     this.props.onChangeText( evt.nativeEvent.text )
   }
   onBarCodeRead(data){
@@ -139,7 +142,7 @@ class Input extends React.Component {
                   {...this.props}
                   value={this.state.text}
                   onChangeText={this.onChangeText.bind(this)}
-                  //onChange={this.onChange.bind(this)}
+            // onChange={this.onChange.bind(this)}
                   onEndEditing={this.onEndEditing.bind(this)  
                   }
                 />

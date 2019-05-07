@@ -19,12 +19,12 @@ import PropTypes from 'prop-types';
 const HaveNoIdeaWhyThisIsNeeded=3
 
 const SelectLabel = styled.Text`
-  font-size: ${props => props.theme.BaseInput.fontSize};
+  font-size: ${props => props.myTheme.BaseInput.fontSize};
   flex:1;
 `
 
 SelectLabel.defaultProps = {
-  theme: defaultTheme
+  myTheme: defaultTheme
 }
 
 const LabelIconWrapper = styled.View`
@@ -55,13 +55,13 @@ const Icon = styled(BaseIcon)`
 `
 
 const SelectPlaceholder = styled.Text`
-  color: ${props => props.theme.BaseInput.placeholderColor};
+  color: ${props => props.myTheme.BaseInput.placeholderColor};
   margin-bottom: 5;
-  fontSize: ${props => props.theme.BaseInput.fontSize};
+  fontSize: ${props => props.myTheme.BaseInput.fontSize};
 `
 
 SelectPlaceholder.defaultProps = {
-  theme: defaultTheme
+  myTheme: defaultTheme
 }
 
 class Select extends Component {

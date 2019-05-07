@@ -15,15 +15,15 @@ const LabelWrapper = styled.View`
 `
 
 const LabelText = styled.Text`
-  color: ${props => props.theme.Label.color};
+  color: ${props => props.myTheme.Label.color};
   margin-top: 5;
   margin-bottom: 5;
-  font-size: ${props => props.theme.Label.fontSize};
-  fontWeight: ${props => props.theme.Label.fontWeight};
+  font-size: ${props => props.myTheme.Label.fontSize};
+  fontWeight: ${props => props.myTheme.Label.fontWeight};
 `
 
 LabelText.defaultProps = {
-  theme: defaultTheme,
+  myTheme: defaultTheme,
   componentName: 'Label',
 }
 
@@ -38,7 +38,7 @@ const Label = props => {
     }
   }
   return (
-    <LabelWrapper inlineLabel={inlineLabel} theme={theme}>
+    <LabelWrapper inlineLabel={inlineLabel} myTheme={theme}>
       <LabelText inlineLabel={inlineLabel} theme={textTheme} >{ children2 }</LabelText>
     </LabelWrapper>
   )

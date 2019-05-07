@@ -4,11 +4,11 @@ import styled from 'styled-components/native'
 import defaultTheme from './Theme'
 
 const ButtonGroup = styled.View`
-  height: ${props => props.theme.Button.height};
+  height: ${props => props.myTheme.Button.height};
 `
 
 ButtonGroup.defaultProps = {
-  theme: defaultTheme,
+  myTheme: defaultTheme,
   componentName: 'ButtonGroup'
 }
 
