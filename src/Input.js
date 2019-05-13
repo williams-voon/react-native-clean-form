@@ -70,20 +70,20 @@ StyledInput2.defaultProps = {
   myTheme: defaultTheme
 }
 
+  /*
 class StyledInput extends Component {
-/*
   shouldComponentUpdate (nextProps){
       let ret=Platform.OS !== 'ios'
       || (this.props.value === nextProps.value && (nextProps.defaultValue == undefined || nextProps.defaultValue == '' ))
       || (this.props.defaultValue === nextProps.defaultValue && (nextProps.value == undefined || nextProps.value == '' ));
-      console.log('ret',ret, 'this.props.value',this.props.value,'nextProps.value',nextProps.value,'nextProps.defaultValue',nextProps.defaultValue,'this.props.defaultValue',this.props.defaultValue)
+    //  console.log('ret',ret, 'this.props.value',this.props.value,'nextProps.value',nextProps.value,'nextProps.defaultValue',nextProps.defaultValue,'this.props.defaultValue',this.props.defaultValue)
       return ret
   }
-  */
   render() {
       return <StyledInput2 {...this.props} />;
   }
 };
+  */
 
 class Input extends React.Component {
   constructor(props) {
@@ -102,10 +102,10 @@ class Input extends React.Component {
       setTimeout(() => {this.setState({ text: text })})
  //     console.log('onChangeText', text);
   }
-  //onChange(evt){
+  onChange(evt){
 	//  console.log('onChange',evt.nativeEvent.text);
-	//this.setState({ text: evt.nativeEvent.text })
-  //}
+	  this.setState({ text: evt.nativeEvent.text })
+  }
   onEndEditing(evt){
     this.setState({ text: evt.nativeEvent.text })
   //  console.log('onEndEditing',evt.nativeEvent.text);
@@ -128,21 +128,21 @@ class Input extends React.Component {
           <View style={styles.container}>
             {
               Platform.OS === 'android'?(
-                <StyledInput
+                <StyledInput2
                   inlineLabel={this.props.inlineLabel}
                   placeholderTextColor={this.props.theme.BaseInput.placeholderColor}
                   underlineColorAndroid='transparent'
                   {...this.props}
                 />
               ):(
-                <StyledInput
+                <StyledInput2
                   inlineLabel={this.props.inlineLabel}
                   placeholderTextColor={this.props.theme.BaseInput.placeholderColor}
                   underlineColorAndroid='transparent'
                   {...this.props}
                   value={this.state.text}
                   onChangeText={this.onChangeText.bind(this)}
-            // onChange={this.onChange.bind(this)}
+             onChange={this.onChange.bind(this)}
                   onEndEditing={this.onEndEditing.bind(this)  
                   }
                 />
