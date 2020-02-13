@@ -9,7 +9,7 @@ import {
   StyleSheet,
   Keyboard
 } from 'react-native'
-import styled from 'styled-components/native'
+//import styled from 'styled-components/native'
 import { default as BaseIcon } from 'react-native-vector-icons/Ionicons';
 import defaultTheme from './Theme'
 
@@ -18,20 +18,41 @@ import PropTypes from 'prop-types';
 // TODO: FIXME
 const HaveNoIdeaWhyThisIsNeeded=3
 
-const SelectLabel = styled.Text`
-  font-size: ${props => props.myTheme.BaseInput.fontSize};
-  flex:1;
-`
+// const SelectLabel = styled.Text`
+//   font-size: ${props => props.myTheme.BaseInput.fontSize};
+//   flex:1;
+// `
+class SelectLabel extends Component {
+  render(){
+    return (
+      <Text style={{
+        fontSize: this.props.myTheme.BaseInput.fontSize,
+        justifyContent: 'center'
+      }}  {...this.props}>{ this.props.children }</Text>
+    )
+  }
+}
 
 SelectLabel.defaultProps = {
   myTheme: defaultTheme
 }
 
-const LabelIconWrapper = styled.View`
-  justify-content: center;
-  align-items: center;
-  flex-direction:row;
-`
+// const LabelIconWrapper = styled.View`
+//   justify-content: center;
+//   align-items: center;
+//   flex-direction:row;
+// `
+class LabelIconWrapper extends Component {
+  render(){
+    return (
+      <View style={{
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row'
+      }}  {...this.props}>{ this.props.children }</View>
+    )
+  }
+}
 
 //height: ${props => props.inlineLabel ? props.theme.FormGroup.height - props.theme.FormGroup.borderWidth*2 : props.theme.FormGroup.height-HaveNoIdeaWhyThisIsNeeded};
 
@@ -39,9 +60,18 @@ LabelIconWrapper.defaultProps = {
   theme: defaultTheme
 }
 
-const SelectWrapper = styled.View`
-  flex: ${props => props.inlineLabel ? .5 : 1};
-`
+// const SelectWrapper = styled.View`
+//   flex: ${props => props.inlineLabel ? .5 : 1};
+// `
+class SelectWrapper extends Component {
+  render(){
+    return (
+      <View style={{
+        flex: this.props.inlineLabel ? .5 : 1
+      }}  {...this.props}>{ this.props.children }</View>
+    )
+  }
+}
 
 //height: ${props => props.inlineLabel ? props.theme.FormGroup.height - props.theme.FormGroup.borderWidth*2 : props.theme.FormGroup.height-HaveNoIdeaWhyThisIsNeeded};
 
@@ -49,16 +79,28 @@ SelectWrapper.defaultProps = {
   theme: defaultTheme
 }
 
-const Icon = styled(BaseIcon)`
-  height:10;
-  width:10;
-`
+// const Icon = styled(BaseIcon)`
+//   height:10;
+//   width:10;
+// `
+//const Icon=<BaseIcon height="10" width="10"/>
 
-const SelectPlaceholder = styled.Text`
-  color: ${props => props.myTheme.BaseInput.placeholderColor};
-  margin-bottom: 5;
-  fontSize: ${props => props.myTheme.BaseInput.fontSize};
-`
+// const SelectPlaceholder = styled.Text`
+//   color: ${props => props.myTheme.BaseInput.placeholderColor};
+//   margin-bottom: 5;
+//   fontSize: ${props => props.myTheme.BaseInput.fontSize};
+// `
+class SelectPlaceholder extends Component {
+  render(){
+    return (
+      <Text style={{
+        color: this.props.myTheme.BaseInput.placeholderColor,
+        marginBottom: 5,
+        fontSize: this.props.myTheme.BaseInput.fontSize
+      }} >{ this.props.children }</Text>
+    )
+  }
+}
 
 SelectPlaceholder.defaultProps = {
   myTheme: defaultTheme
@@ -76,7 +118,7 @@ class Select extends Component {
     this.onValueChange = this.onValueChange.bind(this)
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.value !== this.state.value) {
       this.onValueChange(nextProps.value)
     }
@@ -204,7 +246,7 @@ class Select extends Component {
                  </View>
                ):(<SelectLabel inlineLabel={inlineLabel}>{ label }</SelectLabel>)
              }
-             <Icon name="ios-arrow-down" />
+             <BaseIcon height="10" width="10" name="ios-arrow-down"/>
            </LabelIconWrapper>
          </TouchableOpacity>
        </SelectWrapper>
@@ -233,7 +275,7 @@ class Select extends Component {
           <TouchableOpacity style={styles.button} onPress={this.toggleSelector}>
             <LabelIconWrapper inlineLabel={inlineLabel}>
               <SelectLabel inlineLabel={inlineLabel}>{ label }</SelectLabel>
-              <Icon name="ios-arrow-down" />
+              <BaseIcon height="10" width="10" name="ios-arrow-down"/>
             </LabelIconWrapper>
           </TouchableOpacity>
         </SelectWrapper>

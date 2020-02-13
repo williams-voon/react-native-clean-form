@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {TextInput, View,Platform,TouchableOpacity,StyleSheet} from 'react-native'
-import styled from 'styled-components/native'
+//import styled from 'styled-components/native'
 import defaultTheme from './Theme'
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -46,10 +46,20 @@ const determineTextOrientation = (props) => {
 }
 
 // When doing stacked labels we want the input to be greedy
-const InputWrapper = styled.View`
-  flex: ${props => calculateFlexValue(props)};
-  justify-content: center;
-`
+// const InputWrapper = styled.View`
+//   flex: ${props => calculateFlexValue(props)};
+//   justify-content: center;
+// `
+class InputWrapper extends Component {
+  render(){
+    return (
+      <View style={{
+        flex: calculateFlexValue(this.props),
+        justifyContent: 'center'
+      }}  {...this.props}>{ this.props.children }</View>
+    )
+  }
+}
 
 InputWrapper.defaultProps = {
   theme: defaultTheme
@@ -57,15 +67,32 @@ InputWrapper.defaultProps = {
 
 // Subtract the border of the form group to have a full height input
  // 2018-7-14, change padding-top/padding-bottom 4 to 0
-const StyledInput2 = styled.TextInput`
-  flex: 1;
-  color: ${props => props.myTheme.Input.color};
-  font-size: ${props => props.myTheme.BaseInput.fontSize};
-  line-height: ${props => props.myTheme.BaseInput.lineHeight};
-  padding-top: 0;
-  padding-bottom: 0;
-  text-align-vertical: ${props => determineTextOrientation(props)};
-`
+// const StyledInput2 = styled.TextInput`
+//   flex: 1;
+//   color: ${props => props.myTheme.Input.color};
+//   font-size: ${props => props.myTheme.BaseInput.fontSize};
+//   line-height: ${props => props.myTheme.BaseInput.lineHeight};
+//   padding-top: 0;
+//   padding-bottom: 0;
+//   text-align-vertical: ${props => determineTextOrientation(props)};
+// `
+
+class StyledInput2 extends Component {
+  render(){
+    return (
+      <TextInput style={{
+        flex: 1,
+        color:this.props.myTheme.Input.color,
+        fontSize:this.props.myTheme.BaseInput.fontSize,
+        lineHeight:this.props.myTheme.BaseInput.lineHeight,
+        paddingTop: 0,
+        paddingBottom: 0,
+        textAlignVertical: determineTextOrientation(this.props),
+      }}  {...this.props} />
+    )
+  }
+}
+
 StyledInput2.defaultProps = {
   myTheme: defaultTheme
 }

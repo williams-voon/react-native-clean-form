@@ -53,10 +53,10 @@ SelectWrapper.defaultProps = {
   myTheme: defaultTheme
 }
 
-const Icon = styled(BaseIcon)`
-  height:10;
-  width:10;
-`
+// const Icon = styled(BaseIcon)`
+//   height:10;
+//   width:10;
+// `
 
 const SelectPlaceholder = styled.Text`
   color: ${props => props.myTheme.BaseInput.placeholderColor};
@@ -163,7 +163,7 @@ class Select extends Component {
          <TouchableOpacity onPress={this.toggleSelector}>
            <LabelIconWrapper inlineLabel={inlineLabel}>
              { label }<SelectLabel inlineLabel={inlineLabel}></SelectLabel>
-             <Icon name="ios-arrow-down" />
+             <BaseIcon height="10" width="10" name="ios-arrow-down"/>
            </LabelIconWrapper>
          </TouchableOpacity>
        </SelectWrapper>

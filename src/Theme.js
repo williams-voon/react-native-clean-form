@@ -27,7 +27,7 @@ const Theme = {
     borderBottomColor: '#ddd',
     labelColor: '#909090',
     labelSize: 9,
-    labelWeight: 700,
+    labelWeight: 'bold',
     labelHeight: 25,
     paddingTop: 4,
     paddingBottom: 4,

@@ -35,11 +35,11 @@ const FormGroupWrapper = styled.View`
   border-width: ${props => props.border ? props.myTheme.FormGroup.borderWidth : 0};
   flex-direction: ${props => props.inlineLabel ? 'row' : 'column' };
   justify-content: flex-start;
-  marginBottom: ${props => props.myTheme.FormGroup.marginBottom};
-  paddingTop : ${props => props.myTheme.Fieldset.paddingTop };
-  paddingRight : ${props => props.myTheme.Fieldset.paddingRight };
-  paddingBottom : ${props => props.myTheme.Fieldset.paddingBottom };
-  paddingLeft : ${props => props.myTheme.Fieldset.paddingLeft };
+  margin-bottom: ${props => props.myTheme.FormGroup.marginBottom};
+  padding-top : ${props => props.myTheme.Fieldset.paddingTop };
+  padding-right : ${props => props.myTheme.Fieldset.paddingRight };
+  padding-bottom : ${props => props.myTheme.Fieldset.paddingBottom };
+  padding-left : ${props => props.myTheme.Fieldset.paddingLeft };
 `
 
 //height: ${props => calculateHeight(props)};
