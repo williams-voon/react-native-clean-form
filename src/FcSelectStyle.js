@@ -1,19 +1,26 @@
 'use strict';
 
 import { StyleSheet, Dimensions ,Platform} from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 
-const {height, width} = Dimensions.get('window');
+let {height: originHeight, width: originWidth} = Dimensions.get('window');
+const isTablet=DeviceInfo.isTablet()
+const width= isTablet?(originHeight>originWidth?originHeight:originWidth):originWidth //可能 Screen 初始化太早，需要重新设定
+const height= isTablet?(originHeight>originWidth?originWidth:originHeight):originHeight //可能 Screen 初始化太早，需要重新设定
 
+
+const isIphoneX=(Platform.OS === 'ios' &&
+  !Platform.isPad &&
+  !Platform.isTVOS &&
+  (height === 812 ||height === 896  ))
 const PADDING = 8;
 const BORDER_RADIUS = 5;
 const FONT_SIZE = 16;
 const HIGHLIGHT_COLOR = 'rgba(0,118,255,0.9)';
-const OPTION_CONTAINER_HEIGHT = height-(Platform.OS === 'ios'?120:140); //400;
+const OPTION_CONTAINER_HEIGHT = height-(Platform.OS === 'ios'?(isIphoneX?170:140):140); //400;
 const TOP=50;
-const isIphoneX=(Platform.OS === 'ios' &&
-  !Platform.isPad &&
-  !Platform.isTVOS &&
-  height === 812)
+
+console.log('OPTION_CONTAINER_HEIGHT', OPTION_CONTAINER_HEIGHT)
 
 export default StyleSheet.create({
 
@@ -25,10 +32,10 @@ export default StyleSheet.create({
 
     optionContainer: {
         borderRadius:BORDER_RADIUS,
-        width:width*0.8,
+        width:width*0.7,
         height:OPTION_CONTAINER_HEIGHT,
         backgroundColor:'rgba(255,255,255,0.8)',
-        left:width*0.1,
+        left:width*0.15,
         marginTop: TOP,
     //    top: TOP, // (height-OPTION_CONTAINER_HEIGHT)/2
     },
@@ -147,9 +154,9 @@ export default StyleSheet.create({
     },
     addItemButtonWrap:{
         position: 'absolute',
-        right: 8,
-        top: isIphoneX?32:20,
-        padding:15
+        right: 0,
+        top: 32,  //isIphoneX?32:20,
+        padding:10
     }
 });
 

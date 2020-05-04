@@ -13,7 +13,8 @@ import {
     ScrollView,
     TouchableOpacity,
     Platform,
-    ViewPropTypes
+    ViewPropTypes,
+    SafeAreaView
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -121,7 +122,7 @@ export default class FcModalPicker extends Component {
           showsVerticalScrollIndicator=false
         }
         return (
-            <View style={[styles.overlayStyle, this.props.overlayStyle]}>
+            <SafeAreaView style={{flex:1, backgroundColor: 'rgba(0,0,0,0.7)'}}>
               {
                 this.props.addItemFunc!=undefined&&
                 <TouchableOpacity style={styles.addItemButtonWrap}  onPress={()=>{
@@ -139,7 +140,7 @@ export default class FcModalPicker extends Component {
                       </View>
                   </ScrollView>
               </View>
-               <View style={styles.cancelComfirmContainer}>
+               <View style={[styles.cancelComfirmContainer, {marginBottom: 20}]}>
                   <TouchableOpacity style={styles.cancelConfirmButtonStyle} onPress={this.props.onRequestClose}>
                       <View style={[styles.cancelButtonStyle, this.props.cancelButtonStyle]}>
                           <Text style={[styles.cancelTextStyle,this.props.cancelTextStyle]}>{this.props.cancelText}</Text>
@@ -155,7 +156,7 @@ export default class FcModalPicker extends Component {
                   </TouchableOpacity>
               </View>
 
-            </View>);
+            </SafeAreaView>);
     }
 
     render() {

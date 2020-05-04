@@ -14,7 +14,8 @@ import {
     Platform,
     Switch,
     TouchableOpacity,
-    ViewPropTypes
+    ViewPropTypes,
+    SafeAreaView
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -177,7 +178,7 @@ export default class FcModalMultiPicker extends Component {
           showsVerticalScrollIndicator=false
         }
         return (
-            <View style={[styles.overlayStyle, this.props.overlayStyle]} >
+            <SafeAreaView style={{flex:1, backgroundColor: 'rgba(0,0,0,0.7)'}} >
               {
                 this.props.addItemFunc!=undefined&&
                   <TouchableOpacity style={styles.addItemButtonWrap} onPress={()=>{
@@ -209,7 +210,7 @@ export default class FcModalMultiPicker extends Component {
                   </TouchableOpacity>
               </View>
 
-           </View>
+           </SafeAreaView>
     );
     }
 
