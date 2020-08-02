@@ -100,7 +100,7 @@ export default class FcModalPicker extends Component {
       return (
           <TouchableOpacity key={option.value} onPress={()=>this.onChange(option)}>
               <View style={[styles.optionStyle, this.props.optionStyle]}>
-                  <Text style={[styles.optionTextStyle,this.props.optionTextStyle,selected]}>{option.label}</Text>
+                  <Text numberOfLines={1} style={[styles.optionTextStyle,this.props.optionTextStyle,selected]}>{option.label}</Text>
               </View>
           </TouchableOpacity>)
     }
@@ -140,12 +140,14 @@ export default class FcModalPicker extends Component {
                       </View>
                   </ScrollView>
               </View>
-               <View style={[styles.cancelComfirmContainer, {marginBottom: 20}]}>
+              <View style={[styles.cancelComfirmContainer, {marginBottom: 20}]}>
                   <TouchableOpacity style={styles.cancelConfirmButtonStyle} onPress={this.props.onRequestClose}>
                       <View style={[styles.cancelButtonStyle, this.props.cancelButtonStyle]}>
                           <Text style={[styles.cancelTextStyle,this.props.cancelTextStyle]}>{this.props.cancelText}</Text>
                       </View>
                   </TouchableOpacity>
+              {
+                  options.length>0&&
                   <TouchableOpacity style={styles.cancelConfirmButtonStyle} onPress={()=>{
                       this.props.onChange(null);
                       this.props.onRequestClose();
@@ -154,7 +156,8 @@ export default class FcModalPicker extends Component {
                           <Text style={[styles.confirmTextStyle,this.props.confirmTextStyle]}>{this.props.deselectText}</Text>
                       </View>
                   </TouchableOpacity>
-              </View>
+              }
+             </View>
 
             </SafeAreaView>);
     }
