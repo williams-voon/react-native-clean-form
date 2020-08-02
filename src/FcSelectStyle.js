@@ -32,10 +32,10 @@ export default StyleSheet.create({
 
     optionContainer: {
         borderRadius:BORDER_RADIUS,
-        width:width*0.7,
+        width:width*0.9,
         height:OPTION_CONTAINER_HEIGHT,
         backgroundColor:'rgba(255,255,255,0.8)',
-        left:width*0.15,
+        left:width*0.05,
         marginTop: TOP,
     //    top: TOP, // (height-OPTION_CONTAINER_HEIGHT)/2
     },
