@@ -151,6 +151,8 @@ class Select extends Component {
       customModalPicker,
       multiSelect,
       addItemFunc,
+      cancelText,
+      deselectText,
       ...rest
     } = this.props
     const { showSelector, value } = this.state
@@ -226,7 +228,8 @@ class Select extends Component {
            visible={showSelector}
            data={options}
            onChange={this.onValueChange}
-           cancelText="取消"
+           cancelText={cancelText?cancelText:"取消"}
+           deselectText={deselectText? deselectText: '全部不选'}
            initValue={value}
            addItemFunc={addItemFunc!=undefined?()=>{addItemFunc(this.toggleSelector)}: null }
          />
@@ -324,6 +327,7 @@ const styles = StyleSheet.create({
 Select.ThePropTypes = {
   labelKey: PropTypes.string,
   placeholder: PropTypes.string,
+  cancelText: PropTypes.string,
   onValueChange: PropTypes.func.isRequired,
   options: PropTypes.array,
   valueKey: PropTypes.string,
