@@ -144,7 +144,7 @@ class Select extends Component {
                  onPress={this.leftButtonOnPress.bind(this)} >
                     <BaseIcon name={ 'md-close' } size={30} color={'white'} />
                 </TouchableOpacity>
-                <Text style={{color: 'white'}}>请选择色调、饱和度、亮度，确定颜色</Text>
+                <Text style={{color: 'white'}}>Please select hue, saturation, brightness</Text>
                 <TouchableOpacity style={styles.button}
                   onPress={this.rightButtonOnPress.bind(this)} >
                      <BaseIcon name={ 'md-checkmark' } size={30} color={'white'} />
