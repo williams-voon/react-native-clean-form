@@ -13,9 +13,9 @@ import {
     ScrollView,
     TouchableOpacity,
     Platform,
-    ViewPropTypes,
     SafeAreaView
 } from 'react-native';
+import {ViewPropTypes} from 'deprecated-react-native-prop-types'
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import styles,{OPTION_CONTAINER_HEIGHT, TOP} from './FcSelectStyle';
