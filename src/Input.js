@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {TextInput, View,Platform,TouchableOpacity,StyleSheet} from 'react-native'
 //import styled from 'styled-components/native'
 import defaultTheme from './Theme'
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-ionicons' 
 
 import PropTypes from 'prop-types';
 
@@ -191,7 +191,8 @@ class Input extends React.Component {
 
 Input.propTypes = {
   ...TextInput.propTypes,
-  inlineLabel: PropTypes.bool.isRequired
+  inlineLabel: PropTypes.bool.isRequired,
+  secureTextEntry: PropTypes.bool,
 }
 
 Input.defaultProps = {

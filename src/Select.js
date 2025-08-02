@@ -10,7 +10,7 @@ import {
   Keyboard
 } from 'react-native'
 //import styled from 'styled-components/native'
-import { default as BaseIcon } from 'react-native-vector-icons/Ionicons';
+import { default as BaseIcon }  from 'react-native-ionicons' 
 import defaultTheme from './Theme'
 
 import PropTypes from 'prop-types';
@@ -249,7 +249,7 @@ class Select extends Component {
                  </View>
                ):(<SelectLabel inlineLabel={inlineLabel}>{ label }</SelectLabel>)
              }
-             <BaseIcon height="10" width="10" name="ios-arrow-down"/>
+             <BaseIcon name="arrow-dropdown" size={20}/>
            </LabelIconWrapper>
          </TouchableOpacity>
        </SelectWrapper>
@@ -278,7 +278,7 @@ class Select extends Component {
           <TouchableOpacity style={styles.button} onPress={this.toggleSelector}>
             <LabelIconWrapper inlineLabel={inlineLabel}>
               <SelectLabel inlineLabel={inlineLabel}>{ label }</SelectLabel>
-              <BaseIcon height="10" width="10" name="ios-arrow-down"/>
+              <BaseIcon name="arrow-dropdown" size={20}/>
             </LabelIconWrapper>
           </TouchableOpacity>
         </SelectWrapper>

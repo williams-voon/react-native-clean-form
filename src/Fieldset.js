@@ -55,7 +55,8 @@ class FieldsetWrapper extends Component {
 }
 
 FieldsetWrapper.defaultProps = {
-  theme: defaultTheme
+  theme: defaultTheme,
+  myTheme: defaultTheme
 }
 
 // const FieldsetFormWrapper = styled.View`

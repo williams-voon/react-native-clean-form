@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 import _ from 'lodash'
@@ -26,7 +26,7 @@ const calculateHeight = (props) => {
 
   return (height)
 }
-
+/*
 const FormGroupWrapper = styled.View`
   align-items: ${props => props.inlineLabel ? 'center' : 'stretch' };
   border-color: ${props => props.error ? props.myTheme.FormGroup.errorBorderColor : props.myTheme.FormGroup.borderColor};
@@ -40,7 +40,29 @@ const FormGroupWrapper = styled.View`
   padding-right : ${props => props.myTheme.Fieldset.paddingRight };
   padding-bottom : ${props => props.myTheme.Fieldset.paddingBottom };
   padding-left : ${props => props.myTheme.Fieldset.paddingLeft };
-`
+
+*/
+class FormGroupWrapper extends Component {
+  render(){
+    let props=this.props;
+    return (
+      <View style={{
+        alignItems:  props.inlineLabel ? 'center' : 'stretch' ,
+        borderColor: props.error ? props.myTheme.FormGroup.errorBorderColor : props.myTheme.FormGroup.borderColor,
+        borderRadius: props.myTheme.FormGroup.borderRadius,
+        borderStyle: props.myTheme.FormGroup.borderStyle,
+        borderWidth: props.border ? props.myTheme.FormGroup.borderWidth : 0,
+        flexDirection: props.inlineLabel ? 'row' : 'column' ,
+        justifyContent: 'flex-start',
+        marginBottom: props.myTheme.FormGroup.marginBottom,
+        paddingTop : props.myTheme.Fieldset.paddingTop ,
+        paddingRight : props.myTheme.Fieldset.paddingRight ,
+        paddingBottom : props.myTheme.Fieldset.paddingBottom ,
+        paddingLeft : props.myTheme.Fieldset.paddingLeft ,
+      }}  {...this.props}>{ this.props.children }</View>
+    )
+  }
+}
 
 //height: ${props => calculateHeight(props)};
 
