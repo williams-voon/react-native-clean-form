@@ -6,48 +6,20 @@ import defaultTheme from '../Theme'
 import ReactPropTypes from 'prop-types';
 
 const ErrorMessage = styled.Text`
-  color: ${props => props.myTheme.ErrorMessage.color};
-  fontSize: ${props => props.myTheme.ErrorMessage.fontSize};
-  marginBottom: ${props => props.myTheme.ErrorMessage.marginBottom};
-  textAlign: ${props => props.myTheme.ErrorMessage.textAlign};
+  color: ${props => defaultTheme.ErrorMessage.color};
+  fontSize: ${props => defaultTheme.ErrorMessage.fontSize};
+  marginBottom: ${props => defaultTheme.ErrorMessage.marginBottom};
+  textAlign: ${props => defaultTheme.ErrorMessage.textAlign};
 `
 
 const TipsMessage = styled.Text`
-  color: ${props => props.myTheme.TipsMessage.color};
-  fontSize: ${props => props.myTheme.TipsMessage.fontSize};
-  marginTop: ${props => props.myTheme.TipsMessage.marginTop};
-  marginBottom: ${props => props.myTheme.ErrorMessage.marginBottom};
-  textAlign: ${props => props.myTheme.TipsMessage.textAlign};
+  color: ${props => defaultTheme.TipsMessage.color};
+  fontSize: ${props => defaultTheme.TipsMessage.fontSize};
+  marginTop: ${props => defaultTheme.TipsMessage.marginTop};
+  marginBottom: ${props => defaultTheme.ErrorMessage.marginBottom};
+  textAlign: ${props => defaultTheme.TipsMessage.textAlign};
 `
-/*
-class ErrorMessage extends Component {
-  render(){
-    let props=this.props;
-    return (
-      <Text style={{
-        color:   props.myTheme.ErrorMessage.color,
-        fontSize:   props.myTheme.ErrorMessage.fontSize,
-        marginBottom:   props.myTheme.ErrorMessage.marginBottom,
-        textAlign:   props.myTheme.ErrorMessage.textAlign
-      }}  {...this.props}>{ this.props.children }</Text>
-    )
-  }
-}
-class TipsMessage extends Component {
-  render(){
-    let props=this.props;
-    return (
-      <Text style={{
-        color: props.myTheme.TipsMessage.color,
-        fontSize: props.myTheme.TipsMessage.fontSize,
-        marginTop: props.myTheme.TipsMessage.marginTop,
-        marginBottom: props.myTheme.ErrorMessage.marginBottom,
-        textAlign: props.myTheme.TipsMessage.textAlign,
-      }}  {...this.props}>{ this.props.children }</Text>
-    )
-  }
-}
-  */
+
 ErrorMessage.defaultProps = {
   myTheme: defaultTheme
 }
